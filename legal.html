@@ -23,14 +23,6 @@
 </style>
 </head>
 <body>
-<nav class="solid" role="navigation" aria-label="Navegación principal">
-  <a href="index.html" class="nav-logo" aria-label="Vita Nova inicio">
-    <img src="assets/img/img_00.jpg" alt="Logo Vita Nova">
-    <span class="nav-logo-text">Vita <span>Nova</span></span>
-  </a>
-  <div class="nav-right"><a class="nav-cta" href="index.html">← Volver al sitio</a></div>
-</nav>
-
 <main class="legal-wrap">
   <h1>Información legal</h1>
   <p class="updated">Asociación Vita Nova Colombia · Última actualización: julio de 2026</p>
@@ -96,12 +88,12 @@
   <p>Las consultas se atenderán en un término máximo de diez (10) días hábiles y los reclamos en quince (15) días hábiles, conforme a los artículos 14 y 15 de la Ley 1581 de 2012.</p>
 </main>
 
-<footer>
-  <div class="footer-bottom" style="margin-top:0;border-top:none">
-    <span>© <span id="year"></span> Asociación Vita Nova Colombia.</span>
-    <a href="index.html" style="color:var(--teal-light)">Volver al inicio</a>
-  </div>
-</footer>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/shell.js"></script>
+<script src="assets/js/anim.js"></script>
 </body>
 </html>

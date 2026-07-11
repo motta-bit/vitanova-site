@@ -74,8 +74,13 @@
       ins.push({ eventoId, uid: user.uid, nombre: user.nombre, email: user.email, tipo: user.tipo, organizacion: user.organizacion || "", telefono: user.telefono, ciudad: user.ciudad, ...extra, fecha: new Date().toISOString() });
       lsSet(LS_INSCRIPCIONES, ins);
     },
+    async donar(recibo) {
+      const dons = lsGet("vn_donaciones", []);
+      dons.push(recibo);
+      lsSet("vn_donaciones", dons);
+    },
     async exportar() {
-      return { usuarios: lsGet(LS_USERS, []).map(({ passHash, ...u }) => u), inscripciones: lsGet(LS_INSCRIPCIONES, []) };
+      return { usuarios: lsGet(LS_USERS, []).map(({ passHash, ...u }) => u), inscripciones: lsGet(LS_INSCRIPCIONES, []), donaciones: lsGet("vn_donaciones", []) };
     }
   };
 
@@ -126,11 +131,16 @@
       if (prev.exists()) throw new Error("Ya estás inscrito en este evento.");
       await fsMod.setDoc(ref, { eventoId, uid: user.uid, nombre: user.nombre, email: user.email, tipo: user.tipo, organizacion: user.organizacion || "", telefono: user.telefono || "", ciudad: user.ciudad || "", ...extra, fecha: new Date().toISOString() });
     },
+    async donar(recibo) {
+      const { fsMod } = fb;
+      await fsMod.setDoc(fsMod.doc(fb.db, "donaciones", recibo.numero), recibo);
+    },
     async exportar() {
       const { fsMod } = fb;
-      const out = { usuarios: [], inscripciones: [] };
+      const out = { usuarios: [], inscripciones: [], donaciones: [] };
       (await fsMod.getDocs(fsMod.collection(fb.db, "usuarios"))).forEach(d => out.usuarios.push(d.data()));
       (await fsMod.getDocs(fsMod.collection(fb.db, "inscripciones"))).forEach(d => out.inscripciones.push(d.data()));
+      (await fsMod.getDocs(fsMod.collection(fb.db, "donaciones"))).forEach(d => out.donaciones.push(d.data()));
       return out;
     }
   };
@@ -166,7 +176,7 @@
     toast("¡Inscripción confirmada! Te contactaremos por correo.");
   };
   window.VN_exportCSV = async function () {
-    const { usuarios, inscripciones } = await backend.exportar();
+    const { usuarios, inscripciones, donaciones } = await backend.exportar();
     const toCSV = rows => {
       if (!rows.length) return "";
       const cols = [...new Set(rows.flatMap(r => Object.keys(r)))];
@@ -181,7 +191,8 @@
     };
     dl("vitanova_usuarios.csv", toCSV(usuarios));
     dl("vitanova_inscripciones.csv", toCSV(inscripciones));
-    toast("Exportado: usuarios e inscripciones (CSV).");
+    dl("vitanova_donaciones.csv", toCSV(donaciones || []));
+    toast("Exportado: usuarios, inscripciones y donaciones (CSV).");
   };
 
   // ---------- Inicio ----------

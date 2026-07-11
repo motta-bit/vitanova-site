@@ -327,6 +327,81 @@ footer a:hover{color:var(--teal-light)}
   *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
 }
 
+/* ---------- Barra inteligente ---------- */
+nav{transform:translateY(0);transition:transform .45s var(--ease),background .4s,border-color .4s,box-shadow .4s}
+nav.nav-hidden{transform:translateY(-110%)}
+.nav-links a.active{color:var(--teal-deep);background:var(--teal-pale);font-weight:500}
+nav.on-dark:not(.solid) .nav-links a.active{background:rgba(255,255,255,.12);color:#fff}
+
+/* ---------- Hero de página interior ---------- */
+.page-hero{min-height:52svh;display:flex;flex-direction:column;justify-content:flex-end;background:var(--ink);color:#fff;padding:calc(var(--nav-h) + 4rem) 5vw 3.5rem;position:relative;overflow:hidden}
+.page-hero h1{color:#fff;font-size:clamp(2.4rem,5.5vw,4.4rem);position:relative;z-index:2}
+.page-hero .ph-sub{color:rgba(255,255,255,.72);max-width:56ch;margin-top:1rem;position:relative;z-index:2}
+.page-hero .section-label{position:relative;z-index:2}
+.page-hero .ph-glow{position:absolute;width:52vw;height:52vw;border-radius:50%;filter:blur(90px);opacity:.5;background:radial-gradient(circle,#14503F,transparent 65%);top:-22%;right:-12%;pointer-events:none}
+.page-hero .ph-glow.g2{background:radial-gradient(circle,#2A2566,transparent 65%);left:-14%;right:auto;top:auto;bottom:-40%}
+
+/* ---------- WhatsApp flotante ---------- */
+.wa-fab{position:fixed;right:1.4rem;bottom:1.4rem;z-index:1200;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.4);transition:transform .3s var(--ease);text-decoration:none}
+.wa-fab:hover{transform:scale(1.1)}
+.wa-fab svg{width:32px;height:32px;fill:#fff}
+.wa-fab::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(37,211,102,.5);animation:waPulse 2s ease-out infinite}
+@keyframes waPulse{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.35);opacity:0}}
+.wa-tip{position:absolute;right:110%;top:50%;transform:translateY(-50%);background:var(--ink);color:#fff;font-size:.75rem;padding:7px 13px;border-radius:100px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s}
+.wa-fab:hover .wa-tip{opacity:1}
+
+/* ---------- Burbujas con fotos ---------- */
+.bubbles-field{position:relative;min-height:480px;max-width:1100px;margin:0 auto}
+.bubble{position:absolute;border-radius:50%;overflow:hidden;box-shadow:0 18px 44px rgba(12,21,18,.22);border:4px solid rgba(255,255,255,.85);will-change:transform}
+.bubble img{width:100%;height:100%;object-fit:cover}
+.bubble .b-label{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(to top,rgba(12,21,18,.55),transparent 55%);color:#fff;font-size:.72rem;font-weight:500;padding-bottom:12px;opacity:0;transition:opacity .3s;text-align:center}
+.bubble:hover .b-label{opacity:1}
+@media (max-width:760px){.bubbles-field{min-height:340px}}
+
+/* ---------- Mapa D3 ---------- */
+#colombia-map svg{width:100%;height:auto;filter:drop-shadow(0 22px 55px rgba(15,110,86,.16))}
+.dept{stroke:var(--warm-white);stroke-width:1;cursor:pointer;transition:opacity .3s,filter .3s}
+.dept:hover{filter:brightness(1.14)}
+.dept.active{filter:brightness(1.12) saturate(1.15);stroke-width:1.6}
+.dept.dim{opacity:.28}
+#map-tooltip{position:fixed;z-index:1300;display:none;background:var(--ink);color:#fff;border-radius:10px;padding:.5rem .9rem;font-size:.78rem;pointer-events:none;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+#map-tooltip b{display:block}
+#map-tooltip span{color:var(--teal-light);font-size:.68rem}
+
+/* ---------- Donaciones ---------- */
+.donar-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;max-width:1150px;margin:0 auto;align-items:start}
+.donar-card{background:var(--warm-white);border:1px solid var(--border);border-radius:24px;padding:2.4rem;box-shadow:0 16px 48px rgba(15,110,86,.09)}
+.monto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:.4rem 0 1rem}
+.monto-opt{border:1.5px solid var(--border);border-radius:14px;padding:.9rem .5rem;font-size:.92rem;font-weight:600;cursor:pointer;background:var(--cream);text-align:center;font-family:var(--font-body);transition:all .2s;color:var(--text-mid)}
+.monto-opt.active{border-color:var(--teal-deep);background:var(--teal-pale);color:var(--teal-deep)}
+.pay-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.pay-badges span{font-size:.68rem;border:1px solid var(--border);border-radius:100px;padding:4px 12px;color:var(--text-muted)}
+.pay-status{display:none;border-radius:16px;padding:1.4rem 1.6rem;margin:1.6rem auto;max-width:640px;font-size:.9rem}
+.pay-status.err{background:#FBEAE7;color:#8C3327;display:block}
+.pay-status.wait{background:var(--plum-light);color:var(--plum);display:block}
+.pay-status p{max-width:none;color:inherit;margin-top:.4rem;font-size:.85rem}
+#pay-sim .modal{max-width:430px;text-align:center}
+#pay-sim .sim-amount{font-family:var(--font-display);font-size:2.6rem;color:var(--teal-deep);margin:.6rem 0 1.2rem}
+
+/* ---------- Recibo ---------- */
+.recibo{border:1.5px dashed var(--teal-mid);border-radius:18px;padding:1.6rem;background:var(--cream)}
+.recibo-head{display:flex;gap:.9rem;align-items:center;margin-bottom:1rem}
+.recibo-head img{width:46px;height:46px;border-radius:10px}
+.recibo-head b{display:block;font-size:.95rem}
+.recibo-head span{font-size:.72rem;color:var(--text-muted)}
+.recibo h4{font-family:var(--font-display);font-size:1.3rem;margin-bottom:.8rem;color:var(--teal-deep)}
+.recibo table{width:100%;border-collapse:collapse;font-size:.85rem}
+.recibo td{padding:.45rem 0;border-bottom:1px solid var(--border)}
+.recibo td:first-child{color:var(--text-muted);width:42%}
+.recibo tr.total td{font-weight:700;font-size:1.05rem;color:var(--teal-deep);border-bottom:none;padding-top:.8rem}
+.recibo-gracias{font-size:.8rem;margin-top:1rem;color:var(--teal-deep)}
+@media print{
+  body>*{display:none!important}
+  #recibo-modal{display:block!important;position:static;background:#fff;padding:0}
+  #recibo-modal .modal{box-shadow:none;max-width:100%;animation:none}
+  #recibo-modal .modal-close,#recibo-print-btn,#recibo-cerrar{display:none!important}
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width:1024px){
   .hero-inner{grid-template-columns:1fr;text-align:center;gap:3rem}
@@ -337,6 +412,7 @@ footer a:hover{color:var(--teal-light)}
   .map-panel{position:static}
   .impact-grid,.stat-band{grid-template-columns:repeat(2,1fr)}
   .eventos-grid,.support-grid{grid-template-columns:1fr;max-width:560px}
+  .donar-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
   .nav-toggle{display:flex}
