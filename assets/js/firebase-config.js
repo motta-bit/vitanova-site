@@ -12,12 +12,13 @@
 // demostración guardando los datos en el navegador (localStorage).
 // ============================================================
 window.FIREBASE_CONFIG = {
-  apiKey: "DEMO",
-  authDomain: "DEMO",
-  projectId: "DEMO",
-  storageBucket: "DEMO",
-  messagingSenderId: "DEMO",
-  appId: "DEMO"
+  apiKey: "AIzaSyD9afswGPIMS1P7MrMu-yEjDgMlYWVEGvI",
+  authDomain: "vitanovacolombia.firebaseapp.com",
+  projectId: "vitanovacolombia",
+  storageBucket: "vitanovacolombia.firebasestorage.app",
+  messagingSenderId: "332759410490",
+  appId: "1:332759410490:web:5f8d1726f30b9c3fbed203",
+  measurementId: "G-JWTKJ85N43"
 };
 // Correo del administrador: puede exportar los registros a CSV
 window.VN_ADMIN_EMAILS = ["admin@vitanovacolombia.org", "asovitanova@gmail.com", "cdparravargas@gmail.com"];
