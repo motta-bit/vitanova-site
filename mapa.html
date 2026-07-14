@@ -22,28 +22,17 @@
 <section id="mapa" style="background:var(--cream)" aria-label="Mapa interactivo de Colombia">
   <div class="map-filters" role="group" aria-label="Filtrar por área"></div>
   <div class="mapa-grid">
-    <div class="mapa-svg-wrap" id="colombia-map"></div>
+    <div class="mapa-svg-wrap" id="colombia-map">
+      <button id="map-reset" style="display:none" aria-label="Restablecer el mapa">⤺ Ver todo el mapa</button>
+    </div>
     <aside class="map-panel" aria-live="polite">
       <div id="map-panel-body"></div>
     </aside>
   </div>
-  <p class="fade-up" style="text-align:center;margin:2.4rem auto 0;font-size:.8rem;color:var(--text-muted)">El archipiélago de San Andrés, Providencia y Santa Catalina (Región Caribe) no se muestra en el encuadre continental.</p>
+  <p class="fade-up" style="text-align:center;margin:2.4rem auto 0;font-size:.8rem;color:var(--text-muted)">Toca un departamento para acercarte · usa la rueda o pellizca para hacer zoom · San Andrés y Providencia (Región Caribe) no aparece en el encuadre continental.</p>
 </section>
 
 <div id="map-tooltip" aria-hidden="true"></div>
-
-<section id="stats" data-dark aria-label="Cifras del territorio">
-  <div class="section-center">
-    <span class="section-label">Fase 1</span>
-    <h2 data-wr>Un país entero por incluir</h2>
-  </div>
-  <div class="impact-grid">
-    <div class="impact-item fade-up"><span class="impact-n" data-count="32">0</span><span class="impact-label">Departamentos de Colombia en el modelo territorial</span></div>
-    <div class="impact-item fade-up" data-delay=".1"><span class="impact-n" data-count="130">0</span><span class="impact-label">Municipios priorizados en la Fase 1</span></div>
-    <div class="impact-item fade-up" data-delay=".2"><span class="impact-n" data-count="13">0</span><span class="impact-label">Ciudades ancla con proyectos activos</span></div>
-    <div class="impact-item fade-up" data-delay=".3"><span class="impact-n" data-count="5">0</span><span class="impact-label">Regiones naturales articuladas</span></div>
-  </div>
-</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>

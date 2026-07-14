@@ -12,6 +12,7 @@
     { href: "nosotros.html",  label: "Nosotros" },
     { href: "programas.html", label: "Programas" },
     { href: "mapa.html",      label: "Mapa" },
+    { href: "nucleos.html",   label: "Núcleos" },
     { href: "galeria.html",   label: "Galería" },
     { href: "eventos.html",   label: "Eventos" },
     { href: "apoyar.html",    label: "Donar y apoyar" },
@@ -61,10 +62,14 @@
   onScroll();
 
   const toggle = $(".nav-toggle", nav);
-  toggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("open");
+  function setMenu(open) {
+    nav.classList.toggle("open", open);
     toggle.setAttribute("aria-expanded", open);
-  });
+    document.body.style.overflow = open ? "hidden" : "";
+    if (open) nav.classList.remove("nav-hidden");
+  }
+  toggle.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+  $$(".nav-links a", nav).forEach(a => a.addEventListener("click", () => setMenu(false)));
 
   /* ---------- FOOTER ---------- */
   const footer = document.createElement("footer");

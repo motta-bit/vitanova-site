@@ -351,12 +351,21 @@ nav.on-dark:not(.solid) .nav-links a.active{background:rgba(255,255,255,.12);col
 .wa-fab:hover .wa-tip{opacity:1}
 
 /* ---------- Burbujas con fotos ---------- */
-.bubbles-field{position:relative;min-height:480px;max-width:1100px;margin:0 auto}
-.bubble{position:absolute;border-radius:50%;overflow:hidden;box-shadow:0 18px 44px rgba(12,21,18,.22);border:4px solid rgba(255,255,255,.85);will-change:transform}
+.bubbles-field{position:relative;min-height:clamp(320px,42vw,500px);max-width:1200px;margin:0 auto}
+.bubble{position:absolute;border-radius:50%;overflow:hidden;box-shadow:0 18px 44px rgba(12,21,18,.22);border:4px solid rgba(255,255,255,.85);will-change:transform;aspect-ratio:1}
+.bubble.b-sm{width:clamp(70px,9vw,120px)}
+.bubble.b-md{width:clamp(85px,11vw,145px)}
+.bubble.b-lg{width:clamp(100px,13.5vw,175px)}
+.bubble.b-xl{width:clamp(120px,16vw,210px)}
 .bubble img{width:100%;height:100%;object-fit:cover}
 .bubble .b-label{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(to top,rgba(12,21,18,.55),transparent 55%);color:#fff;font-size:.72rem;font-weight:500;padding-bottom:12px;opacity:0;transition:opacity .3s;text-align:center}
 .bubble:hover .b-label{opacity:1}
-@media (max-width:760px){.bubbles-field{min-height:340px}}
+@media (max-width:640px){
+  .bubbles-field{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1rem;min-height:auto;padding:1rem 0}
+  .bubble{position:static!important;flex:0 0 auto}
+  .bubble.b-sm,.bubble.b-md{width:96px}
+  .bubble.b-lg,.bubble.b-xl{width:128px}
+}
 
 /* ---------- Mapa D3 ---------- */
 #colombia-map svg{width:100%;height:auto;filter:drop-shadow(0 22px 55px rgba(15,110,86,.16))}
@@ -364,6 +373,18 @@ nav.on-dark:not(.solid) .nav-links a.active{background:rgba(255,255,255,.12);col
 .dept:hover{filter:brightness(1.14)}
 .dept.active{filter:brightness(1.12) saturate(1.15);stroke-width:1.6}
 .dept.dim{opacity:.28}
+.mapa-svg-wrap{position:relative}
+#map-reset{position:absolute;top:.8rem;left:.8rem;z-index:5;border:1.5px solid var(--teal-deep);background:var(--warm-white);color:var(--teal-deep);border-radius:100px;padding:8px 18px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:var(--font-body);box-shadow:0 6px 18px rgba(15,110,86,.15);transition:all .2s}
+#map-reset:hover{background:var(--teal-deep);color:#fff}
+.region-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1200px;margin:3rem auto 0}
+.region-card{border-radius:22px;padding:2rem;color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:.7rem;transition:transform .35s var(--ease),box-shadow .35s}
+.region-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(12,21,18,.25)}
+.region-card h3{color:#fff}
+.region-card p{color:rgba(255,255,255,.85);font-size:.88rem;max-width:none}
+.region-card .rc-stats{display:flex;gap:1.6rem;margin-top:.4rem}
+.region-card .rc-stats b{font-family:var(--font-display);font-size:2rem;display:block;line-height:1}
+.region-card .rc-stats span{font-size:.7rem;opacity:.85}
+.region-card .rc-cities{font-size:.75rem;opacity:.9;margin-top:auto;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.25)}
 #map-tooltip{position:fixed;z-index:1300;display:none;background:var(--ink);color:#fff;border-radius:10px;padding:.5rem .9rem;font-size:.78rem;pointer-events:none;box-shadow:0 10px 26px rgba(0,0,0,.3)}
 #map-tooltip b{display:block}
 #map-tooltip span{color:var(--teal-light);font-size:.68rem}
@@ -403,6 +424,22 @@ nav.on-dark:not(.solid) .nav-links a.active{background:rgba(255,255,255,.12);col
 }
 
 /* ---------- Responsive ---------- */
+/* Colapso del menú a hamburguesa (el sitio tiene 9 secciones) */
+@media (max-width:1180px){
+  .nav-links{display:none}
+  .nav-toggle{display:flex;z-index:960}
+  nav.open{background:var(--warm-white)!important}
+  nav.open .nav-logo-text{color:var(--teal-deep)!important}
+  nav.open .nav-toggle span{background:var(--text-dark)}
+  nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  nav.open .nav-toggle span:nth-child(2){opacity:0}
+  nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  /* nav tiene transform, así que fixed se anclaría a la nav: usamos absolute + alto explícito */
+  nav.open .nav-links{display:flex;position:absolute;top:100%;left:0;right:0;height:calc(100vh - var(--nav-h));background:var(--warm-white);flex-direction:column;padding:1.6rem 6vw 3rem;gap:.2rem;overflow-y:auto;box-shadow:0 20px 40px rgba(0,0,0,.1);align-items:stretch}
+  nav.open .nav-links li{border-bottom:1px solid var(--border)}
+  nav.open .nav-links a{display:block;padding:16px 6px;font-size:1.05rem;color:var(--text-dark);border-radius:0}
+  nav.open .nav-links a.active{background:none;color:var(--teal-deep);font-weight:700}
+}
 @media (max-width:1024px){
   .hero-inner{grid-template-columns:1fr;text-align:center;gap:3rem}
   .hero-tagline{margin-inline:auto;border-left:none;border-top:2px solid var(--teal-mid);padding:1.2rem 0 0}
@@ -414,10 +451,12 @@ nav.on-dark:not(.solid) .nav-links a.active{background:rgba(255,255,255,.12);col
   .eventos-grid,.support-grid{grid-template-columns:1fr;max-width:560px}
   .donar-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
-  .nav-links{display:none}
-  .nav-toggle{display:flex}
-  nav.open .nav-links{display:flex;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--warm-white);flex-direction:column;padding:1.4rem 5vw;border-bottom:1px solid var(--border);box-shadow:0 20px 40px rgba(0,0,0,.1)}
-  nav.open .nav-links a{padding:12px;font-size:1rem;color:var(--text-dark)}
+}
+@media (max-width:620px){
+  .nav-user .uname{display:none}
+  .nav-cta{padding:8px 14px;font-size:.76rem}
+  nav{padding:0 3.5vw}
+  .nav-logo-text{font-size:1.1rem}
 }
 @media (max-width:860px){
   .prog-track{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}

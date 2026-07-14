@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Núcleos Inclusivos de Desarrollo Social y Tecnológico de Vita Nova — cifras por región de Colombia.">
+<title>Núcleos de desarrollo — Vita Nova Colombia</title>
+<link rel="icon" type="image/jpeg" href="assets/img/img_00.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="page-hero" data-dark>
+  <div class="ph-glow"></div><div class="ph-glow g2"></div>
+  <span class="section-label">Modelo territorial</span>
+  <h1>Núcleos Inclusivos de Desarrollo</h1>
+  <p class="ph-sub">Cada núcleo integra ~50 familias en un modelo productivo sostenible de alto impacto: la meta de la Fase 1 son 650 núcleos en 130 municipios, organizados por las cinco regiones naturales de Colombia.</p>
+</header>
+
+<section id="cifras" data-dark aria-label="Cifras generales" style="padding-top:3rem">
+  <div class="impact-grid">
+    <div class="impact-item fade-up"><span class="impact-n" data-count="650">0</span><span class="impact-label">Núcleos inclusivos proyectados en la Fase 1</span></div>
+    <div class="impact-item fade-up" data-delay=".1"><span class="impact-n" data-count="130">0</span><span class="impact-label">Municipios priorizados, de la Amazonia al Pacífico</span></div>
+    <div class="impact-item fade-up" data-delay=".2"><span class="impact-n" data-count="50">0</span><span class="impact-label">Familias integradas por cada núcleo productivo</span></div>
+    <div class="impact-item fade-up" data-delay=".3"><span class="impact-n" data-count="5">0</span><span class="impact-label">Regiones naturales articuladas</span></div>
+  </div>
+</section>
+
+<section id="regiones" style="background:var(--cream)" aria-label="Núcleos por región">
+  <div class="section-center">
+    <span class="section-label">Por región</span>
+    <h2 data-wr>La meta, región por región</h2>
+    <p class="fade-up">Toca una región en el <a href="mapa.html" style="color:var(--teal-deep)">mapa interactivo</a> para verla en el territorio real.</p>
+  </div>
+  <div class="region-cards" id="region-cards"></div>
+</section>
+
+<section id="modelo" style="background:var(--warm-white)" aria-label="Cómo funciona un núcleo">
+  <div class="two-col">
+    <div>
+      <span class="section-label">El modelo</span>
+      <h2 data-wr>¿Cómo funciona un núcleo?</h2>
+      <p style="margin:1.3rem 0" class="fade-up">Un Núcleo Inclusivo de Desarrollo Social y Tecnológico es una unidad productiva comunitaria donde ~50 familias se forman, trabajan y emprenden juntas dentro de economías emergentes de alto impacto.</p>
+      <div class="reveal-img media-frame"><img src="assets/img/img_15.jpg" alt="Comunidad en actividad productiva" loading="lazy"></div>
+    </div>
+    <div>
+      <div class="mv-block fade-up"><h3>1 · Caracterización</h3><p>Diagnóstico psicológico, social y funcional de cada familia para diseñar la ruta pertinente.</p></div>
+      <div class="mv-block fade-up"><h3>2 · Formación</h3><p>Bachillerato por ciclos, técnicos laborales y carreras profesionales con ajustes razonables (Ley 3011).</p></div>
+      <div class="mv-block fade-up"><h3>3 · Empleabilidad</h3><p>Contratos de aprendizaje de dos años con ingresos dignos dentro de los modelos de negocio del núcleo.</p></div>
+      <div class="mv-block fade-up"><h3>4 · Producción sostenible</h3><p>El núcleo opera como economía solidaria: la riqueza generada permanece en la comunidad.</p></div>
+      <div class="mv-block fade-up"><h3>5 · Tecnología para la Paz</h3><p>Drones, conectividad satelital y DeepTech accesible al servicio del territorio.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta" style="background:var(--plum-light)">
+  <div class="section-center">
+    <h2 data-wr>Haz posible el próximo núcleo</h2>
+    <p class="fade-up" style="margin-bottom:2rem">Tu donación o la vinculación de tu organización aceleran la meta de 650 núcleos.</p>
+    <div class="btn-group fade-up" style="justify-content:center">
+      <a href="apoyar.html" class="btn-primary">Donar ahora</a>
+      <a href="mapa.html" class="btn-secondary">Ver el mapa interactivo</a>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/shell.js"></script>
+<script>
+// Se genera ANTES de anim.js para que las tarjetas entren en las animaciones
+(function () {
+  const wrap = document.getElementById("region-cards");
+  const PROJECTS = window.VN_PROJECTS;
+  Object.entries(window.VN_REGIONS).forEach(([key, r], i) => {
+    const cities = PROJECTS.filter(p => p.region === key).map(p => p.city);
+    const card = document.createElement("article");
+    card.className = "region-card fade-up";
+    card.style.background = `linear-gradient(150deg, ${r.color} 0%, #0F3D30 130%)`;
+    card.dataset.delay = (i * 0.08).toFixed(2);
+    card.innerHTML = `
+      <h3>${r.name}</h3>
+      <p>${r.desc}</p>
+      <div class="rc-stats">
+        <div><b>${r.nucleos}</b><span>núcleos proyectados</span></div>
+        <div><b>${r.municipios}</b><span>municipios Fase 1</span></div>
+      </div>
+      <div class="rc-cities">Ciudades ancla: ${cities.join(" · ")}</div>`;
+    wrap.appendChild(card);
+  });
+})();
+</script>
+<script src="assets/js/anim.js"></script>
+</body>
+</html>
