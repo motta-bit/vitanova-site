@@ -20,4 +20,4 @@ window.FIREBASE_CONFIG = {
   appId: "DEMO"
 };
 // Correo del administrador: puede exportar los registros a CSV
-window.VN_ADMIN_EMAILS = ["asovitanova@gmail.com", "cdparravargas@gmail.com"];
+window.VN_ADMIN_EMAILS = ["admin@vitanovacolombia.org", "asovitanova@gmail.com", "cdparravargas@gmail.com"];
