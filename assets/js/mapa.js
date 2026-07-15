@@ -120,9 +120,10 @@
       // Clic en el fondo del mapa = restablecer
       svg.on("click", () => { resetZoom(); overview(); });
 
+      // Entrada suave del mapa completo (sin ocultar nunca los departamentos:
+      // animar su opacidad chocaba con la transición CSS y quedaban invisibles)
       if (window.gsap && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        gsap.from(".dept", { autoAlpha: 0, stagger: .02, duration: .6, ease: "power2.out", delay: .2 });
-        gsap.from(".city-dot", { autoAlpha: 0, stagger: .05, duration: .5, delay: .7 });
+        gsap.from(wrap, { autoAlpha: 0, y: 30, duration: .9, ease: "power2.out", clearProps: "all" });
       }
 
       buildFilters();

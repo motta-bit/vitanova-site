@@ -5,7 +5,7 @@
   --teal-deep:#0F6E56; --teal-mid:#1D9E75; --teal-light:#9FE1CB; --teal-pale:#E1F5EE;
   --plum:#3C3489; --plum-light:#EEEDFE;
   --amber:#B07D2B; --coral:#C2503C; --blue:#2B7DB0;
-  --ink:#0C1512; --ink-2:#12211C; --ink-3:#1A2E27;
+  --ink:#11201A; --ink-2:#16281F; --ink-3:#1E332A;
   --cream:#F7F5F0; --warm-white:#FDFCFA;
   --text-dark:#1A1A18; --text-mid:#3D3D3A; --text-muted:#6B6B67;
   --border:rgba(15,110,86,.15);
@@ -314,12 +314,26 @@ footer a:hover{color:var(--teal-light)}
 .form-msg.err{display:block;background:#FBEAE7;color:var(--coral)}
 .demo-note{font-size:.7rem;color:var(--text-muted);background:var(--plum-light);border-radius:10px;padding:.55rem .8rem;margin-top:.6rem}
 
+/* ---------- Redes sociales ---------- */
+.footer-social{display:flex;gap:.7rem;margin-top:1.1rem}
+.fs-link{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);transition:all .3s var(--ease)}
+.fs-link:hover{background:var(--teal-mid);transform:translateY(-3px)}
+.fs-link svg{width:19px;height:19px;fill:rgba(255,255,255,.85)}
+.nav-social-row{display:none}
+@media (max-width:1180px){
+  .nav-social-row{display:flex!important;gap:.9rem;padding:1.4rem 6px;border-bottom:none!important}
+  .ns-link{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--teal-pale);transition:all .25s}
+  .ns-link:hover{background:var(--teal-deep)}
+  .ns-link svg{width:21px;height:21px;fill:var(--teal-deep)}
+  .ns-link:hover svg{fill:#fff}
+}
+
 /* ---------- Toast ---------- */
 #toast{position:fixed;bottom:1.6rem;left:50%;transform:translateX(-50%) translateY(120%);background:var(--ink);color:#fff;border-radius:100px;padding:.85rem 1.6rem;font-size:.85rem;z-index:1700;transition:transform .45s var(--ease);box-shadow:0 14px 40px rgba(0,0,0,.3)}
 #toast.show{transform:translateX(-50%) translateY(0)}
 
 /* ---------- Reveal helpers (JS-driven) ---------- */
-.fade-up{opacity:0;transform:translateY(44px)}
+.fade-up{opacity:0;transform:translateY(26px)}
 .reveal-img{clip-path:inset(0 0 100% 0)}
 @media (prefers-reduced-motion:reduce){
   .fade-up{opacity:1;transform:none}
@@ -369,7 +383,8 @@ nav.on-dark:not(.solid) .nav-links a.active{background:rgba(255,255,255,.12);col
 
 /* ---------- Mapa D3 ---------- */
 #colombia-map svg{width:100%;height:auto;filter:drop-shadow(0 22px 55px rgba(15,110,86,.16))}
-.dept{stroke:var(--warm-white);stroke-width:1;cursor:pointer;transition:opacity .3s,filter .3s}
+.dept{stroke:var(--warm-white);stroke-width:1;cursor:pointer;transition:filter .3s}
+.dept.dim{transition:opacity .3s,filter .3s}
 .dept:hover{filter:brightness(1.14)}
 .dept.active{filter:brightness(1.12) saturate(1.15);stroke-width:1.6}
 .dept.dim{opacity:.28}

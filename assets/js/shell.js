@@ -71,6 +71,21 @@
   toggle.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
   $$(".nav-links a", nav).forEach(a => a.addEventListener("click", () => setMenu(false)));
 
+  /* ---------- REDES SOCIALES ---------- */
+  const SOCIAL_ICONS = {
+    youtube: '<svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.6V8.4L15.8 12l-6.3 3.6z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2a3.8 3.8 0 0 1-.9 1.4c-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4a3.8 3.8 0 0 1-1.4-.9 3.8 3.8 0 0 1-.9-1.4c-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2m0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.4a1.4 1.4 0 1 1-2.9 0 1.4 1.4 0 0 1 2.9 0z"/></svg>',
+    facebook: '<svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg>',
+    tiktok: '<svg viewBox="0 0 24 24"><path d="M19.6 5.8a5 5 0 0 1-3.5-4.2H12.6v14.6a3 3 0 1 1-2.1-2.9V9.9a6.4 6.4 0 1 0 5.5 6.3V8.7a8.3 8.3 0 0 0 4.8 1.5V6.8c-.4 0-.8 0-1.2-.1z"/></svg>',
+    linkedin: '<svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6a3.8 3.8 0 0 1 3.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zM7.1 20.4H3.5V9h3.6v11.4z"/></svg>'
+  };
+  function socialLinks(cls) {
+    return Object.entries(window.VN_SOCIAL || {})
+      .filter(([, url]) => url)
+      .map(([net, url]) => `<a class="${cls}" href="${url}" target="_blank" rel="noopener" aria-label="${net}">${SOCIAL_ICONS[net] || net}</a>`)
+      .join("");
+  }
+
   /* ---------- FOOTER ---------- */
   const footer = document.createElement("footer");
   footer.innerHTML = `
@@ -78,6 +93,7 @@
       <div>
         <div class="nav-logo" style="margin-bottom:1rem"><img src="assets/img/img_00.jpg" alt=""><span class="nav-logo-text" style="color:#fff">Vita <span style="color:var(--teal-light)">Nova</span></span></div>
         <p style="color:rgba(255,255,255,.6);font-size:.85rem;max-width:34ch">Asociación Vita Nova Colombia. Inclusión, formación y tecnología para la paz — de la Amazonia al Pacífico.</p>
+        <div class="footer-social">${socialLinks("fs-link")}</div>
       </div>
       <div><h4>Sitio</h4>${PAGES.map(p => `<a href="${p.href}">${p.label}</a>`).join("")}</div>
       <div><h4>Legal</h4>
@@ -87,7 +103,7 @@
         <a href="legal.html#cookies">Política de cookies</a>
       </div>
       <div><h4>Contacto</h4>
-        <a href="mailto:asovitanova@gmail.com">asovitanova@gmail.com</a>
+        <a href="mailto:admin@vitanovacolombia.org">admin@vitanovacolombia.org</a>
         <a href="https://wa.me/${window.VN_WHATSAPP}" target="_blank" rel="noopener">WhatsApp: 300 980 2268</a>
         <a href="https://maps.google.com/?q=Av.+El+Poblado+1-50+Medellin" target="_blank" rel="noopener">Av. El Poblado N° 1-50, Medellín</a>
       </div>
@@ -97,6 +113,17 @@
       <span>Hecho con propósito en Colombia 🇨🇴</span>
     </div>`;
   document.body.appendChild(footer);
+
+  // Redes también dentro del menú (útil en móvil)
+  $(".nav-links", nav).insertAdjacentHTML("beforeend", `<li class="nav-social-row">${socialLinks("ns-link")}</li>`);
+
+  /* ---------- Píxel de Meta (solo si está configurado) ---------- */
+  const pixelId = (window.VN_META || {}).pixelId;
+  if (pixelId) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', pixelId);
+    fbq('track', 'PageView');
+  }
 
   /* ---------- WHATSAPP FLOTANTE ---------- */
   const wa = document.createElement("a");

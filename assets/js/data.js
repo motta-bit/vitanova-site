@@ -4,6 +4,21 @@
 
 window.VN_WHATSAPP = "573009802268"; // botón flotante y servicio al cliente
 
+// ---------- Redes sociales ----------
+// Deja "" en las que aún no existan y no se mostrarán.
+window.VN_SOCIAL = {
+  youtube:   "https://youtube.com/@asovitanova",
+  instagram: "https://www.instagram.com/vitanova_aso",
+  facebook:  "",
+  tiktok:    "",
+  linkedin:  ""
+};
+
+// ---------- Meta (Facebook/Instagram) ----------
+// pixelId: ID del píxel de Meta (Administrador de eventos) para medir visitas.
+// Se activa solo cuando pegues el número aquí.
+window.VN_META = { pixelId: "" };
+
 // ---------- Pagos / Donaciones ----------
 // Para activar pagos reales con Wompi (Bancolombia):
 // 1. Crea tu cuenta de comercio en https://comercios.wompi.co
