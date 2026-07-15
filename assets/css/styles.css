@@ -314,6 +314,32 @@ footer a:hover{color:var(--teal-light)}
 .form-msg.err{display:block;background:#FBEAE7;color:var(--coral)}
 .demo-note{font-size:.7rem;color:var(--text-muted);background:var(--plum-light);border-radius:10px;padding:.55rem .8rem;margin-top:.6rem}
 
+/* ---------- Teaser Casa Raíz ---------- */
+#proyectos{background:var(--ink);color:#fff;position:relative;overflow:hidden;text-align:center}
+#proyectos::before{content:'';position:absolute;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,.16),transparent 60%);top:-20vw;left:20vw;pointer-events:none}
+.teaser-wrap{position:relative;max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1.1rem}
+.teaser-badge{display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(159,225,203,.4);color:var(--teal-light);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;padding:8px 18px;border-radius:100px}
+.teaser-pulse{width:8px;height:8px;border-radius:50%;background:var(--teal-mid);animation:tpulse 1.8s ease-in-out infinite}
+@keyframes tpulse{0%,100%{box-shadow:0 0 0 0 rgba(29,158,117,.6)}50%{box-shadow:0 0 0 9px rgba(29,158,117,0)}}
+.teaser-title{color:#fff;font-size:clamp(3rem,8vw,5.6rem);font-style:italic;line-height:1.05;background:linear-gradient(120deg,#fff 30%,var(--teal-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.teaser-sub{color:rgba(255,255,255,.78);max-width:52ch}
+.teaser-hints{display:flex;gap:.9rem;align-items:center;font-family:var(--font-display);font-size:1.05rem;font-style:italic;color:var(--teal-light)}
+.teaser-hints i{color:rgba(255,255,255,.35);font-style:normal}
+.teaser-invite{font-size:.92rem;color:rgba(255,255,255,.65);max-width:52ch;margin-top:.4rem}
+
+/* ---------- Switch de idioma ---------- */
+.lang-switch{display:inline-flex;border:1.5px solid var(--border);border-radius:100px;overflow:hidden;flex-shrink:0}
+.lang-switch button{border:none;background:transparent;font-family:var(--font-body);font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:7px 11px;cursor:pointer;color:var(--text-muted);transition:all .2s}
+.lang-switch button.active{background:var(--teal-deep);color:#fff}
+nav.on-dark:not(.solid):not(.open) .lang-switch{border-color:rgba(255,255,255,.35)}
+nav.on-dark:not(.solid):not(.open) .lang-switch button{color:rgba(255,255,255,.7)}
+nav.on-dark:not(.solid):not(.open) .lang-switch button.active{background:var(--teal-mid);color:#fff}
+.nav-lang-row{display:none}
+@media (max-width:1180px){
+  .nav-right .lang-switch{display:none}
+  .nav-lang-row{display:flex!important;padding:1rem 6px .4rem;border-bottom:none!important}
+}
+
 /* ---------- Redes sociales ---------- */
 .footer-social{display:flex;gap:.7rem;margin-top:1.1rem}
 .fs-link{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);transition:all .3s var(--ease)}
