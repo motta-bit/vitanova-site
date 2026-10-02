@@ -16,6 +16,7 @@
     { href: "galeria.html",   label: "Galería" },
     { href: "eventos.html",   label: "Eventos" },
     { href: "apoyar.html",    label: "Donar y apoyar" },
+    { href: "empresas.html",  label: "Empresas" },
     { href: "contacto.html",  label: "Contacto" }
   ];
   const current = (location.pathname.split("/").pop() || "index.html");
@@ -106,6 +107,7 @@
         <a href="mailto:admin@vitanovacolombia.org">admin@vitanovacolombia.org</a>
         <a href="https://wa.me/${window.VN_WHATSAPP}" target="_blank" rel="noopener">WhatsApp: 300 980 2268</a>
         <a href="https://maps.google.com/?q=Av.+El+Poblado+1-50+Medellin" target="_blank" rel="noopener">Av. El Poblado N° 1-50, Medellín</a>
+        <a href="https://aliados.vitanovacolombia.org" target="_blank" rel="noopener" class="footer-portal" title="Acceso con código de invitación">Portal de aliados</a>
       </div>
     </div>
     <div class="footer-bottom">

@@ -606,3 +606,23 @@ nav.on-dark:not(.solid) .nav-links a.active{background:rgba(255,255,255,.12);col
   .timeline::before{left:27px}
   .tl-year{flex-basis:56px;height:56px;font-size:.82rem}
 }
+
+/* ---------- Empresas: acceso al dossier privado ---------- */
+.emp-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;max-width:1150px;margin:0 auto}
+.emp-copy p{margin:1.2rem 0}
+.emp-list{list-style:none;display:grid;gap:.7rem}
+.emp-list li{position:relative;padding-left:1.6rem;color:var(--text-mid)}
+.emp-list li::before{content:'';position:absolute;left:0;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--teal-mid)}
+.emp-card{background:var(--ink);color:#fff;border-radius:26px;padding:2.4rem 2.2rem;box-shadow:0 30px 60px -30px rgba(17,32,26,.6)}
+.emp-card h3{color:#fff;font-size:1.8rem;margin-bottom:.4rem}
+.emp-card > p{color:rgba(255,255,255,.72);font-size:.95rem}
+.emp-form{display:grid;gap:.7rem;margin-top:1.4rem}
+.emp-form label{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light)}
+.emp-form input{width:100%;font:600 1.1rem var(--font-body);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:14px;border-radius:100px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);color:#fff;outline:none}
+.emp-form input::placeholder{color:rgba(255,255,255,.4);letter-spacing:.06em;text-transform:none}
+.emp-form input:focus{border-color:var(--teal-light);box-shadow:0 0 0 4px rgba(159,225,203,.2)}
+.emp-form .btn-primary{justify-content:center;width:100%;border:0;cursor:pointer}
+.emp-direct{display:inline-block;margin-top:1.1rem;color:var(--teal-light);font-size:.92rem;text-decoration:underline;text-underline-offset:3px}
+.emp-help{margin-top:1rem;font-size:.82rem;color:rgba(255,255,255,.55)!important}
+.emp-help a{color:var(--teal-light)}
+@media (max-width:860px){.emp-grid{grid-template-columns:1fr;gap:2.4rem}.emp-card{padding:2rem 1.4rem}}

@@ -34,7 +34,7 @@
   const NAV = {
     "index.html": "Home", "nosotros.html": "About us", "programas.html": "Programs",
     "mapa.html": "Map", "nucleos.html": "Hubs", "galeria.html": "Gallery",
-    "eventos.html": "Events", "apoyar.html": "Donate & support", "contacto.html": "Contact"
+    "eventos.html": "Events", "apoyar.html": "Donate & support", "empresas.html": "Companies", "contacto.html": "Contact"
   };
   const GLOBAL = [
     ["#open-auth", $("#open-auth") && $("#open-auth").textContent.includes("Cerrar") ? "Sign out" : "Join / Sign in"],
@@ -45,7 +45,8 @@
     ['footer a[href="legal.html#privacidad"]', "Privacy policy"],
     ['footer a[href="legal.html#datos"]', "Data protection (Law 1581)"],
     ['footer a[href="legal.html#terminos"]', "Terms and conditions"],
-    ['footer a[href="legal.html#cookies"]', "Cookie policy"]
+    ['footer a[href="legal.html#cookies"]', "Cookie policy"],
+    [".footer-portal", "Partner portal"]
   ];
   const PAGES = {
     "index.html": [
@@ -181,6 +182,36 @@
       ["#donar-btn-label", "Donate $50.000"],
       ["#apoyar h2", "How else can you support us?"],
       ["#apoyar .support-card h3", ["Administrative & legal support", "In-kind donations", "Institutional agreements"]]
+    ],
+    "empresas.html": [
+      [".page-hero .section-label", "Companies & partners"],
+      [".page-hero h1", "Let's build impact together"],
+      [".ph-sub", "Vita Nova is built with companies, universities and organizations that see inclusion as a driver of development. Explore the full project dossier with your access code."],
+      ["#acceso .section-label", "Private dossier"],
+      ["#acceso h2", "The full project, for your organization"],
+      [".emp-copy > p", "We prepared a private tour for companies and strategic partners: presentation video, figures, productive model, territorial presence and alliances."],
+      [".emp-list li", ["Project presentation video", "Figures and scale of impact", "The Inclusive Development Hubs model", "Territory, team and alliances"]],
+      [".emp-card h3", "Access the dossier"],
+      [".emp-card > p:not(.emp-help)", "Enter the access code Vita Nova gave you."],
+      ['label[for="emp-codigo"]', "Access code"],
+      [".emp-form button", 'View the dossier <span aria-hidden="true">→</span>'],
+      [".emp-direct", "Or go straight to the partner portal ↗"],
+      [".emp-help", 'Don\'t have a code? Write to <a href="mailto:admin@vitanovacolombia.org">admin@vitanovacolombia.org</a> or via <a href="https://wa.me/573009802268" target="_blank" rel="noopener">WhatsApp</a>.'],
+      ["#formas .section-label", "Join the movement"],
+      ["#formas h2", "Ways to involve your company"],
+      ["#formas .ally-card h3", ["Corporate social responsibility", "In-kind donations", "International cooperation", "Impact investment", "Inclusive employment", "Awareness training"]],
+      ["#formas .ally-card p", [
+        "Inter-institutional agreements with measurable impact on inclusion, education and employment.",
+        "Equipment, technology and resources that go straight to the hubs and programs.",
+        "Coordination with agencies and NGOs to scale the model across the territory.",
+        "Take part in the productive hubs and in Casa Raíz, our next big project.",
+        "Hire talent trained by Vita Nova, with the reasonable accommodations each person needs.",
+        "A certified 40-hour workshop so your team builds a truly inclusive culture."
+      ]],
+      ["#cta h2", "Let's talk about your organization"],
+      ["#cta p", "We'll explain how your company can take part and give you your access code."],
+      ["#cta .btn-primary", "Contact us"],
+      ["#cta .btn-secondary", "About Vita Nova"]
     ],
     "contacto.html": [
       [".page-hero .section-label", "Let's talk"],
