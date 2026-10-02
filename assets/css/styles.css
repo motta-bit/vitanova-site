@@ -626,3 +626,6 @@ nav.on-dark:not(.solid) .nav-links a.active{background:rgba(255,255,255,.12);col
 .emp-help{margin-top:1rem;font-size:.82rem;color:rgba(255,255,255,.55)!important}
 .emp-help a{color:var(--teal-light)}
 @media (max-width:860px){.emp-grid{grid-template-columns:1fr;gap:2.4rem}.emp-card{padding:2rem 1.4rem}}
+
+#empresas-home{background:var(--cream)}
+#empresas-home .btn-group{margin-top:1.6rem}
