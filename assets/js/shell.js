@@ -109,7 +109,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year">${new Date().getFullYear()}</span> Asociación Vita Nova Colombia. Todos los derechos reservados.</span>
+      <span>© <span id="year">${new Date().getFullYear()}</span> Asociación Vita Nova Colombia${(window.VN_PAY || {}).nit ? " · NIT " + window.VN_PAY.nit : ""}. Todos los derechos reservados.</span>
       <span>Hecho con propósito en Colombia 🇨🇴</span>
     </div>`;
   document.body.appendChild(footer);

@@ -3,14 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Galería fotográfica de la Asociación Vita Nova Colombia — comunidad, formación y actividades.">
-<meta property="og:title" content="Galería — Vita Nova Colombia">
-<meta property="og:description" content="Asociación Vita Nova Colombia — inclusión, formación y tecnología para la paz en 130 municipios.">
-<meta property="og:image" content="https://vitanovacolombia.org/assets/img/img_05.jpg">
+<meta name="description" content="Fotos y videos reales de la comunidad Vita Nova: talleres de sensibilización, formación, grados y actividades en territorio.">
+<meta property="og:title" content="Galería de fotos y videos | Vita Nova Colombia">
+<meta property="og:description" content="Fotos y videos reales de la comunidad Vita Nova: talleres de sensibilización, formación, grados y actividades en territorio.">
+<meta property="og:image" content="https://vitanovacolombia.org/assets/img/og-cover.jpg">
 <meta property="og:url" content="https://vitanovacolombia.org/galeria.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
-<title>Galería — Vita Nova Colombia</title>
+<!-- SEO -->
+<link rel="canonical" href="https://vitanovacolombia.org/galeria.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Vita Nova Colombia">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#11201A">
+<link rel="apple-touch-icon" href="assets/img/logo.jpg">
+<!-- /SEO -->
+<title>Galería de fotos y videos | Vita Nova Colombia</title>
 <link rel="icon" type="image/jpeg" href="assets/img/img_00.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -27,12 +37,32 @@
 
 <section id="galeria" style="background:var(--cream)" aria-label="Galería fotográfica">
   <div class="gallery-tabs" role="tablist" aria-label="Filtrar galería">
-    <button class="gallery-tab active" data-range="all" role="tab" aria-selected="true">Todas</button>
-    <button class="gallery-tab" data-range="0-11" role="tab" aria-selected="false">Comunidad</button>
-    <button class="gallery-tab" data-range="12-22" role="tab" aria-selected="false">Formación</button>
-    <button class="gallery-tab" data-range="23-33" role="tab" aria-selected="false">Actividades</button>
+    <button class="gallery-tab active" data-cat="all" role="tab" aria-selected="true">Todas</button>
+    <button class="gallery-tab" data-cat="pro" role="tab" aria-selected="false">Sesión profesional</button>
+    <button class="gallery-tab" data-cat="comunidad" role="tab" aria-selected="false">Comunidad</button>
   </div>
   <div class="gallery-grid" id="gallery-grid"></div>
+</section>
+
+<section id="videos" data-dark aria-label="Videos" style="background:var(--ink);color:#fff">
+  <div class="section-center">
+    <span class="section-label">Videos</span>
+    <h2 data-wr>Vita Nova en movimiento</h2>
+  </div>
+  <div class="video-grid">
+    <figure class="video-card fade-up">
+      <video controls playsinline preload="metadata" poster="assets/img/galeria/g_01.jpg">
+        <source src="assets/video/anuncio_30s.mp4" type="video/mp4">
+      </video>
+      <figcaption>Anuncio institucional · 30 s</figcaption>
+    </figure>
+    <figure class="video-card fade-up" data-delay=".1">
+      <video controls playsinline preload="metadata" muted loop>
+        <source src="assets/video/cierre_logo_16x9.mp4" type="video/mp4">
+      </video>
+      <figcaption>Nuestra identidad</figcaption>
+    </figure>
+  </div>
 </section>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Visor de imágenes">
@@ -50,6 +80,7 @@
 <script src="assets/js/shell.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/anim.js"></script>
+<script src="assets/js/galeria-fotos.js"></script>
 <script src="assets/js/galeria.js"></script>
 </body>
 </html>

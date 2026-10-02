@@ -1,5 +1,6 @@
 /* ============================================================
-   GALERÍA — grid, filtros y lightbox
+   GALERÍA — grid, filtros y lightbox (fotos en assets/img/galeria)
+   Usa window.VN_GALERIA = { total, pro, comunidad } (galeria-fotos.js)
    ============================================================ */
 (function () {
   "use strict";
@@ -8,10 +9,12 @@
   const grid = $("#gallery-grid");
   if (!grid) return;
 
+  const G = window.VN_GALERIA || { total: 40, pro: 20, comunidad: 20 };
   let html = "";
-  for (let i = 1; i <= 34; i++) {
+  for (let i = 1; i <= G.total; i++) {
     const n = String(i).padStart(2, "0");
-    html += `<figure class="gal-item" role="button" tabindex="0" aria-label="Ver foto ${i}"><img src="assets/img/img_${n}.jpg" alt="Vita Nova — fotografía ${i}" loading="lazy"></figure>`;
+    const cat = i <= G.pro ? "pro" : "comunidad";
+    html += `<figure class="gal-item" data-cat="${cat}" role="button" tabindex="0" aria-label="Ver foto ${i}"><img src="assets/img/galeria/g_${n}.jpg" alt="Vita Nova — fotografía ${i}" loading="lazy"></figure>`;
   }
   grid.innerHTML = html;
 
@@ -53,12 +56,8 @@
     $$(".gallery-tab").forEach(x => { x.classList.remove("active"); x.setAttribute("aria-selected", "false"); });
     t.classList.add("active");
     t.setAttribute("aria-selected", "true");
-    const range = t.dataset.range;
-    galImgs.forEach((g, i) => {
-      let show = true;
-      if (range !== "all") { const [a, b] = range.split("-").map(Number); show = i >= a && i <= b; }
-      g.style.display = show ? "" : "none";
-    });
+    const cat = t.dataset.cat;
+    galImgs.forEach(g => { g.style.display = (cat === "all" || g.dataset.cat === cat) ? "" : "none"; });
     if (window.ScrollTrigger) ScrollTrigger.refresh();
   }));
 })();

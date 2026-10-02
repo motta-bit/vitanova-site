@@ -4,6 +4,12 @@
    ============================================================ */
 (function () {
   "use strict";
+  // Formato de contadores: data-dec (decimales), data-prefix, data-suffix; separador de miles es-CO
+  function fmtCount(el, v) {
+    const dec = parseInt(el.dataset.dec || "0", 10);
+    const n = Number(v).toLocaleString("es-CO", { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    return (el.dataset.prefix || "") + n + (el.dataset.suffix || "");
+  }
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -49,7 +55,7 @@
 
   if (reduced) {
     $$(".fade-up").forEach(el => { el.style.opacity = 1; el.style.transform = "none"; });
-    $$("[data-count]").forEach(el => { el.textContent = el.dataset.count + (el.dataset.suffix || ""); });
+    $$("[data-count]").forEach(el => { el.textContent = fmtCount(el, parseFloat(el.dataset.count)); });
     $$(".reveal-img").forEach(el => { el.style.clipPath = "none"; });
     return;
   }
@@ -92,12 +98,11 @@
   });
   $$("[data-count]").forEach(el => {
     const end = parseFloat(el.dataset.count);
-    const suf = el.dataset.suffix || "";
     const obj = { v: 0 };
     gsap.to(obj, {
       v: end, duration: 2, ease: "power2.out",
       scrollTrigger: { trigger: el, start: "top 90%" },
-      onUpdate: () => { el.textContent = Math.round(obj.v) + suf; }
+      onUpdate: () => { el.textContent = fmtCount(el, obj.v); }
     });
   });
 

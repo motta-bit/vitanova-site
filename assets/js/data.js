@@ -29,7 +29,7 @@ window.VN_META = { pixelId: "" };
 window.VN_PAY = {
   wompiLink: "",
   nombreFundacion: "Asociación Vita Nova Colombia",
-  nit: "", // NIT de la fundación para el recibo (opcional)
+  nit: "901.778.613-2", // NIT de la fundación (aparece en recibo y pie de página)
   ciudad: "Medellín, Antioquia"
 };
 
