@@ -2,6 +2,8 @@
    MAPA — Colombia real e interactivo (D3 + GeoJSON)
    Clic en un departamento → zoom + información del territorio.
    Clic en una ciudad → zoom + proyectos de la ciudad.
+   Departamentos con presencia activa (VN_ACTIVE_DEPTS) a color, el resto en gris;
+   rutas animadas desde la sede (Medellín) hacia cada punto con "route: true".
    ============================================================ */
 (function () {
   "use strict";
@@ -12,6 +14,10 @@
 
   const AREAS = window.VN_AREAS, REGIONS = window.VN_REGIONS, PROJECTS = window.VN_PROJECTS;
   const DEPT_REGION = window.VN_DEPT_REGION, DEPT_NAME = window.VN_DEPT_NAME;
+  const ACTIVE = new Set(window.VN_ACTIVE_DEPTS || []);
+  const INACTIVE_FILL = "#DCE3DF";
+  const areasOf = p => p.areas || [];
+  const colorOf = p => (AREAS[areasOf(p)[0]] || { color: "#1D9E75" }).color;
   const panel = $("#map-panel-body");
   const tooltip = $("#map-tooltip");
   const resetBtn = $("#map-reset");
@@ -25,6 +31,7 @@
 
   const gRoot = svg.append("g");
   const gDepts = gRoot.append("g");
+  const gRoutes = gRoot.append("g").attr("class", "routes");
   const gCities = gRoot.append("g");
 
   const projection = d3.geoMercator();
@@ -39,6 +46,7 @@
       gRoot.attr("transform", ev.transform);
       placeCities();
       if (resetBtn) resetBtn.style.display = currentK > 1.05 ? "" : "none";
+      svg.classed("show-labels", currentK >= 2.2);
     });
   svg.call(zoom);
 
@@ -81,17 +89,20 @@
       gDepts.selectAll("path")
         .data(continental.features)
         .join("path")
-        .attr("class", "dept")
+        .attr("class", d => "dept" + (ACTIVE.has(d.properties.DPTO) ? " is-active" : " inactive"))
         .attr("d", path)
         .attr("data-region", d => DEPT_REGION[d.properties.DPTO] || "andina")
-        .attr("fill", d => (REGIONS[DEPT_REGION[d.properties.DPTO]] || REGIONS.andina).color)
+        .attr("data-code", d => d.properties.DPTO)
+        .attr("fill", d => ACTIVE.has(d.properties.DPTO)
+          ? (REGIONS[DEPT_REGION[d.properties.DPTO]] || REGIONS.andina).color
+          : INACTIVE_FILL)
         .on("mousemove", (ev, d) => {
           const code = d.properties.DPTO;
           const reg = REGIONS[DEPT_REGION[code]];
           tooltip.style.display = "block";
           tooltip.style.left = (ev.clientX + 14) + "px";
           tooltip.style.top = (ev.clientY - 10) + "px";
-          tooltip.innerHTML = `<b>${DEPT_NAME[code] || code}</b><span>${reg ? reg.name : ""} · clic para acercar</span>`;
+          tooltip.innerHTML = `<b>${DEPT_NAME[code] || code}</b><span>${ACTIVE.has(code) ? "Presencia activa · " + (reg ? reg.name : "") : "Expansión futura"}</span>`;
         })
         .on("mouseleave", () => { tooltip.style.display = "none"; })
         .on("click", (ev, d) => {
@@ -101,6 +112,23 @@
           zoomToFeature(d);
           renderDept(d);
         });
+
+      // Rutas activas: arcos desde la sede hacia cada punto
+      const hq = PROJECTS.find(p => p.flagship);
+      if (hq) {
+        const [hx, hy] = projection(hq.coords);
+        gRoutes.selectAll("path")
+          .data(PROJECTS.filter(p => p.route))
+          .join("path")
+          .attr("class", "route")
+          .attr("d", d => {
+            const [x, y] = projection(d.coords);
+            const mx = (hx + x) / 2, my = (hy + y) / 2;
+            const dx = x - hx, dy = y - hy;
+            const bend = 0.18; // curvatura del arco
+            return `M${hx},${hy} Q${mx - dy * bend},${my + dx * bend} ${x},${y}`;
+          });
+      }
 
       const cityG = gCities.selectAll("g")
         .data(PROJECTS)
@@ -112,8 +140,8 @@
           zoomToPoint(d.coords, 5.5);
           renderCity(d);
         });
-      cityG.append("circle").attr("class", "halo").attr("r", 7).attr("stroke", d => AREAS[d.areas[0]].color);
-      cityG.append("circle").attr("class", "core").attr("r", d => d.flagship ? 7.5 : 5.5).attr("stroke", d => AREAS[d.areas[0]].color);
+      cityG.append("circle").attr("class", "halo").attr("r", 7).attr("stroke", colorOf);
+      cityG.append("circle").attr("class", "core").attr("r", d => d.flagship ? 7.5 : 5.5).attr("stroke", colorOf);
       cityG.append("text").attr("x", 10).attr("y", 4).text(d => d.city);
       placeCities();
 
@@ -160,10 +188,12 @@
   }
 
   function applyFilter() {
-    gCities.selectAll(".city-dot").classed("dim", d => activeArea !== "all" && !d.areas.includes(activeArea));
+    const off = d => activeArea !== "all" && !d.flagship && !areasOf(d).includes(activeArea);
+    gCities.selectAll(".city-dot").classed("dim", off);
+    gRoutes.selectAll(".route").classed("dim", off);
     if (activeArea !== "all") {
-      const regionsWith = new Set(PROJECTS.filter(p => p.areas.includes(activeArea)).map(p => p.region));
-      gDepts.selectAll(".dept").classed("dim", function () { return !regionsWith.has(this.dataset.region); });
+      const deptsWith = new Set(PROJECTS.filter(p => areasOf(p).includes(activeArea)).map(p => p.dept));
+      gDepts.selectAll(".dept.is-active").classed("dim", function () { return !deptsWith.has(this.dataset.code); });
     } else {
       gDepts.selectAll(".dept").classed("dim", false);
     }
@@ -178,11 +208,16 @@
     panel.innerHTML = `
       <span class="mp-region">Colombia · Fase 1</span>
       <h3>Toca el mapa para explorar</h3>
-      <p style="margin-top:.6rem">Haz clic en un <b>departamento</b> para acercarte y ver su territorio, o en una <b>ciudad</b> para conocer sus proyectos. Usa los filtros para ver dónde trabaja cada área.</p>
+      <p style="margin-top:.6rem">Haz clic en un <b>departamento</b> para acercarte y ver su territorio, o en un <b>punto</b> para conocer la ruta. Usa los filtros para ver dónde trabaja cada área.</p>
       <div class="mp-stats">
-        <div class="mp-stat"><b>32</b><span>departamentos</span></div>
+        <div class="mp-stat"><b>${ACTIVE.size}</b><span>departamentos con presencia</span></div>
         <div class="mp-stat"><b>130</b><span>municipios Fase 1</span></div>
-        <div class="mp-stat"><b>13</b><span>ciudades ancla</span></div>
+        <div class="mp-stat"><b>${PROJECTS.filter(p => p.route).length}</b><span>rutas activas</span></div>
+      </div>
+      <div class="map-legend">
+        <span><i class="lg-active"></i>Presencia activa</span>
+        <span><i class="lg-inactive"></i>Expansión futura</span>
+        <span><i class="lg-route"></i>Ruta desde la sede</span>
       </div>
       <p style="font-size:.78rem;color:var(--text-muted)">¿Quieres las cifras de núcleos por región? Visita la página <a href="nucleos.html" style="color:var(--teal-deep)">Núcleos de desarrollo</a>.</p>`;
     animatePanel();
@@ -192,16 +227,17 @@
     const code = f.properties.DPTO;
     const regionKey = DEPT_REGION[code] || "andina";
     const r = REGIONS[regionKey];
-    const citiesIn = PROJECTS.filter(p => d3.geoContains(f, p.coords));
+    const citiesIn = PROJECTS.filter(p => p.dept === code);
     const citiesRegion = PROJECTS.filter(p => p.region === regionKey);
+    const activo = ACTIVE.has(code);
     panel.innerHTML = `
-      <span class="mp-region">${r.name}</span>
+      <span class="mp-region">${activo ? "Presencia activa · " + r.name : "Expansión futura · " + r.name}</span>
       <h3>${DEPT_NAME[code] || code}</h3>
-      <p style="margin-top:.6rem">${r.desc}</p>
-      ${citiesIn.length
-        ? `<p style="font-size:.82rem;margin-top:.6rem"><b>Proyectos en este departamento:</b></p>
-           <div class="map-cities" style="border:none;padding-top:.3rem">${citiesIn.map(c => `<button class="map-city-chip" data-city="${c.city}">${c.city}</button>`).join("")}</div>`
-        : `<p style="font-size:.82rem;color:var(--text-muted);margin-top:.6rem">Aún no hay ciudad ancla en este departamento — hace parte de la expansión territorial de la ${r.name}.</p>`}
+      ${activo
+        ? `<p style="margin-top:.6rem">${r.desc}</p>
+           ${citiesIn.length ? `<p style="font-size:.82rem;margin-top:.6rem"><b>Rutas en este departamento:</b></p>
+           <div class="map-cities" style="border:none;padding-top:.3rem">${citiesIn.map(c => `<button class="map-city-chip" data-city="${c.city}">${c.city}</button>`).join("")}</div>` : ""}`
+        : `<p style="margin-top:.6rem">Aún no tenemos presencia activa en ${DEPT_NAME[code] || "este departamento"}. Hace parte de la expansión futura de Vita Nova.</p>`}
       <div class="map-cities">${citiesRegion.map(c => `<button class="map-city-chip" data-city="${c.city}">${c.city}</button>`).join("")}
         <button class="map-city-chip" data-reset="1">⤺ Ver todo el mapa</button>
       </div>`;
@@ -215,7 +251,9 @@
       <span class="mp-region">${r.name}${p.flagship ? " · Sede principal" : ""}</span>
       <h3>${p.city}</h3>
       <p style="margin-top:.6rem">${p.desc}</p>
-      <div class="mp-areas">${p.areas.map(a => `<span class="mp-area" style="background:${AREAS[a].color}">${AREAS[a].label}</span>`).join("")}</div>
+      <div class="mp-areas">${areasOf(p).length
+        ? areasOf(p).map(a => `<span class="mp-area" style="background:${AREAS[a].color}">${AREAS[a].label}</span>`).join("")
+        : `<span class="mp-area" style="background:var(--teal-deep)">Ruta activa · Fase 1</span>`}</div>
       <div class="map-cities">
         ${PROJECTS.filter(x => x.region === p.region && x.city !== p.city).map(c => `<button class="map-city-chip" data-city="${c.city}">${c.city}</button>`).join("")}
         <button class="map-city-chip" data-reset="1">⤺ Ver todo el mapa</button>

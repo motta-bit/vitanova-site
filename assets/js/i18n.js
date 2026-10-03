@@ -72,7 +72,7 @@
       ["#explora h2", "What would you like to discover today?"],
       ["#explora .support-card h3", ["Impact map", "Events & workshops", "Donate & support"]],
       ["#explora .support-card p", [
-        "Travel across the real map of Colombia: 32 departments, 5 regions and 13 anchor cities with active projects.",
+        "Travel across the real map of Colombia: active presence in 17 departments and routes across the country's 5 regions.",
         "Sign up for the certified awareness workshop, webinars and the inclusive education fair.",
         "Your contribution with an instant receipt: secure donations, administrative support or institutional agreements."
       ]],
@@ -122,6 +122,11 @@
       ["#impacto .impact-label", ["Municipalities in Phase 1, from the Amazon to the Pacific", "Colombian departments", "Inclusive development hubs", "Beneficiary families"]],
       ["#alianzas .section-label", "Strategic alliances"],
       ["#alianzas h2", "An ecosystem built on trust and evidence"],
+      [".ally-type", null, function (el) {
+        const T = { "Convenio de investigación": "Research agreement", "Responsabilidad empresarial": "Corporate responsibility",
+                    "Cooperación": "Cooperation", "Aliado estratégico": "Strategic partner" };
+        if (T[el.textContent]) el.textContent = T[el.textContent];
+      }],
       ["#vision .section-label", "Vision 2025 — 2035"],
       ["#vision h2", "Where we are heading"],
       [".timeline p", [

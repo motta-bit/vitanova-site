@@ -629,3 +629,25 @@ nav.on-dark:not(.solid) .nav-links a.active{background:rgba(255,255,255,.12);col
 
 #empresas-home{background:var(--cream)}
 #empresas-home .btn-group{margin-top:1.6rem}
+
+/* ---------- Mapa: presencia activa y rutas ---------- */
+.dept.inactive{cursor:default}
+.dept.inactive:hover{filter:brightness(1.03)}
+.route{fill:none;stroke:var(--plum);stroke-width:1.6;stroke-dasharray:4 5;vector-effect:non-scaling-stroke;opacity:.7;pointer-events:none;animation:route-flow 1.4s linear infinite;transition:opacity .3s}
+.route.dim{opacity:.06}
+@keyframes route-flow{to{stroke-dashoffset:-18}}
+.city-dot text{opacity:0;transition:opacity .25s}
+.show-labels .city-dot text,.city-dot:hover text,.city-dot.flag text{opacity:1}
+.map-legend{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin:.4rem 0 1rem;font-size:.75rem;color:var(--text-mid)}
+.map-legend span{display:inline-flex;align-items:center;gap:.45rem}
+.map-legend i{display:inline-block;width:14px;height:14px;border-radius:4px}
+.lg-active{background:var(--teal-mid)}
+.lg-inactive{background:#DCE3DF}
+.lg-route{height:0!important;width:20px!important;border-top:2px dashed var(--plum);border-radius:0!important}
+@media (prefers-reduced-motion:reduce){.route{animation:none}}
+
+/* ---------- Aliados con logo ---------- */
+.ally-type{display:inline-block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--teal-mid);margin-bottom:.5rem}
+.ally-logo{height:56px;width:auto;max-width:180px;object-fit:contain;margin-bottom:1rem}
+.marquee-logo img{height:54px;width:auto;max-width:200px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
+.marquee-logo:hover img{filter:none;opacity:1}

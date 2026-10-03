@@ -294,4 +294,23 @@
   $("#admin-export").addEventListener("click", () => window.VN_exportCSV());
 
   if (window.VN_DEMO) { const dn = $("#demo-note"); if (dn) dn.style.display = ""; }
+
+  /* ---------- Aliados (desde VN_ALIADOS en data.js) ---------- */
+  const ALIADOS = window.VN_ALIADOS || [];
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const mq = $("#aliados .marquee");
+  if (mq && ALIADOS.length) {
+    mq.innerHTML = ALIADOS.map(a => a.logo
+      ? `<span class="marquee-item marquee-logo"><img src="${esc(a.logo)}" alt="${esc(a.nombre)}" loading="lazy"></span>`
+      : `<span class="marquee-item">${esc(a.nombre)}</span>`).join("");
+  }
+  const grid = $("[data-aliados]");
+  if (grid && ALIADOS.length) {
+    grid.innerHTML = ALIADOS.map((a, i) => `
+      <article class="ally-card fade-up" data-delay="${((i % 3) * 0.08).toFixed(2)}">
+        ${a.logo ? `<img class="ally-logo" src="${esc(a.logo)}" alt="${esc(a.nombre)}" loading="lazy">` : ""}
+        <span class="ally-type">${esc(a.tipo)}</span>
+        <h3>${esc(a.nombre)}</h3><p>${esc(a.detalle)}</p>
+      </article>`).join("");
+  }
 })();

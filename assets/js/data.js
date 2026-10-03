@@ -45,27 +45,27 @@ window.VN_AREAS = {
 window.VN_REGIONS = {
   caribe: {
     name: "Región Caribe", color: "#8FD8C0",
-    desc: "Costa norte: articulación con comunidades wayúu, zenú y poblaciones costeras. Puerta de entrada logística de la Fase 1.",
+    desc: "La Guajira, Magdalena, Atlántico, Bolívar, Cesar, Sucre y Córdoba: articulación con comunidades wayúu, zenú y poblaciones costeras.",
     municipios: 24, nucleos: 120
   },
   pacifico: {
     name: "Región Pacífico", color: "#4FB998",
-    desc: "Del Chocó a Nariño: inclusión de comunidades afrodescendientes e indígenas con programas agro-ambientales y de economía solidaria.",
+    desc: "Cauca y Nariño: inclusión de comunidades afrodescendientes e indígenas con programas agroambientales y de economía solidaria.",
     municipios: 22, nucleos: 110
   },
   andina: {
     name: "Región Andina", color: "#1D9E75",
-    desc: "Eje central del proyecto: sede en Medellín, alianzas universitarias y laboratorios de Tecnología para la Paz.",
+    desc: "Antioquia, Cundinamarca, Santander y Boyacá: sede en Medellín, convenio de investigación universitaria y laboratorios de Tecnología para la Paz.",
     municipios: 46, nucleos: 230
   },
   orinoquia: {
     name: "Región Orinoquía", color: "#7BC9AC",
-    desc: "Llanos orientales: núcleos agropecuarios inclusivos y conectividad satelital para formación remota.",
+    desc: "Vichada: núcleos agropecuarios inclusivos y conectividad satelital para formación remota.",
     municipios: 18, nucleos: 90
   },
   amazonia: {
     name: "Región Amazonía", color: "#2E8B6F",
-    desc: "De la Amazonia al mundo: etnoeducación, biodiversidad y soluciones DeepTech con las comunidades originarias.",
+    desc: "Amazonas, Vaupés y Putumayo: etnoeducación, biodiversidad y soluciones DeepTech con las comunidades originarias.",
     municipios: 20, nucleos: 100
   }
 };
@@ -79,6 +79,9 @@ window.VN_DEPT_REGION = {
   "18":"amazonia","86":"amazonia","91":"amazonia","94":"amazonia","95":"amazonia","97":"amazonia"
 };
 
+// Departamentos con presencia activa de Vita Nova (código DANE). Fase 1: 17 departamentos.
+window.VN_ACTIVE_DEPTS = ["44","47","08","13","20","05","25","70","23","52","91","97","99","86","19","68","15"];
+
 // Nombres bonitos por código (el GeoJSON trae mayúsculas y sin tildes)
 window.VN_DEPT_NAME = {
   "05":"Antioquia","08":"Atlántico","11":"Bogotá D.C.","13":"Bolívar","15":"Boyacá","17":"Caldas","18":"Caquetá",
@@ -88,47 +91,64 @@ window.VN_DEPT_NAME = {
   "86":"Putumayo","88":"San Andrés y Providencia","91":"Amazonas","94":"Guainía","95":"Guaviare","97":"Vaupés","99":"Vichada"
 };
 
-// Proyectos por ciudad con coordenadas reales [lon, lat]
+// Rutas activas: puntos del mapa con coordenadas reales [lon, lat].
+// "route: true" dibuja la ruta desde la sede (Medellín). Los puntos sin "areas"
+// representan la presencia departamental sin detallar programas.
 window.VN_PROJECTS = [
-  { city: "Medellín",      region: "andina",    coords: [-75.574, 6.244], flagship: true,
+  { city: "Medellín",      dept: "05", region: "andina",    coords: [-75.574, 6.244], flagship: true,
     areas: ["formacion","empleabilidad","nucleos","tecnologia","sensibilizacion","caracterizacion"],
     desc: "Sede institucional (Av. El Poblado N° 1-50). Centro de operaciones, caracterización integral y laboratorio de Tecnología para la Paz." },
-  { city: "Bogotá",        region: "andina",    coords: [-74.072, 4.711],
-    areas: ["formacion","sensibilizacion","tecnologia"],
-    desc: "Alianzas con la Universidad Nacional de Colombia y programas de sensibilización certificada de 40 horas para entidades públicas." },
-  { city: "Cali",          region: "pacifico",  coords: [-76.532, 3.452],
-    areas: ["formacion","empleabilidad"],
-    desc: "Formación técnica laboral con ajustes razonables (Ley 3011) y contratos de aprendizaje de dos años." },
-  { city: "Quibdó",        region: "pacifico",  coords: [-76.649, 5.695],
-    areas: ["nucleos","formacion","caracterizacion"],
-    desc: "Núcleos inclusivos agro-ambientales con comunidades afrodescendientes del Chocó biogeográfico." },
-  { city: "Barranquilla",  region: "caribe",    coords: [-74.796, 10.964],
-    areas: ["empleabilidad","nucleos"],
-    desc: "Modelo productivo portuario-logístico inclusivo: 50 familias por núcleo integradas a economías emergentes." },
-  { city: "Santa Marta",   region: "caribe",    coords: [-74.199, 11.241],
-    areas: ["formacion","sensibilizacion"],
-    desc: "Programas de turismo accesible y formación gastronómica y de servicios para poblaciones vulnerables." },
-  { city: "Riohacha",      region: "caribe",    coords: [-72.907, 11.545],
-    areas: ["nucleos","caracterizacion"],
-    desc: "Caracterización psicosocial y núcleos de desarrollo con comunidades wayúu de La Guajira." },
-  { city: "Bucaramanga",   region: "andina",    coords: [-73.123, 7.119],
+  { city: "Cundinamarca",  dept: "25", region: "andina",    coords: [-74.05, 4.95], route: true,
+    desc: "Presencia activa en el departamento, articulada con el convenio de investigación universitaria." },
+  { city: "Bucaramanga",   dept: "68", region: "andina",    coords: [-73.123, 7.119], route: true,
     areas: ["formacion","tecnologia"],
     desc: "Formación en tecnología e inteligencia artificial con sistemas de evaluación adaptados." },
-  { city: "Villavicencio", region: "orinoquia", coords: [-73.627, 4.142],
-    areas: ["nucleos","empleabilidad"],
-    desc: "Núcleos agropecuarios inclusivos: puerta de la Orinoquía y despensa agrícola con empleo digno." },
-  { city: "Arauca",        region: "orinoquia", coords: [-70.759, 7.084],
-    areas: ["formacion","caracterizacion"],
-    desc: "Formación remota vía conectividad satelital y diagnóstico integral de poblaciones de frontera." },
-  { city: "Pasto",         region: "pacifico",  coords: [-77.277, 1.209],
+  { city: "Tunja",         dept: "15", region: "andina",    coords: [-73.362, 5.535], route: true,
+    desc: "Ruta activa en Boyacá dentro de la Fase 1." },
+  { city: "Barranquilla",  dept: "08", region: "caribe",    coords: [-74.796, 10.964], route: true,
+    areas: ["empleabilidad","nucleos"],
+    desc: "Modelo productivo portuario-logístico inclusivo: 50 familias por núcleo integradas a economías emergentes." },
+  { city: "Santa Marta",   dept: "47", region: "caribe",    coords: [-74.199, 11.241], route: true,
+    areas: ["formacion","sensibilizacion"],
+    desc: "Programas de turismo accesible y formación gastronómica y de servicios para poblaciones vulnerables." },
+  { city: "Riohacha",      dept: "44", region: "caribe",    coords: [-72.907, 11.545], route: true,
+    areas: ["nucleos","caracterizacion"],
+    desc: "Caracterización psicosocial y núcleos de desarrollo con comunidades wayúu de La Guajira." },
+  { city: "Cartagena",     dept: "13", region: "caribe",    coords: [-75.479, 10.391], route: true,
+    desc: "Ruta activa en Bolívar dentro de la Fase 1." },
+  { city: "Valledupar",    dept: "20", region: "caribe",    coords: [-73.253, 10.464], route: true,
+    desc: "Ruta activa en el Cesar dentro de la Fase 1." },
+  { city: "Sincelejo",     dept: "70", region: "caribe",    coords: [-75.398, 9.305], route: true,
+    desc: "Ruta activa en Sucre dentro de la Fase 1." },
+  { city: "Montería",      dept: "23", region: "caribe",    coords: [-75.881, 8.748], route: true,
+    desc: "Ruta activa en Córdoba dentro de la Fase 1." },
+  { city: "Popayán",       dept: "19", region: "pacifico",  coords: [-76.606, 2.444], route: true,
+    desc: "Ruta activa en el Cauca dentro de la Fase 1." },
+  { city: "Pasto",         dept: "52", region: "pacifico",  coords: [-77.277, 1.209], route: true,
     areas: ["formacion","nucleos"],
     desc: "Bachillerato inclusivo por ciclos y núcleos de economía solidaria andino-pacífica." },
-  { city: "Mitú",          region: "amazonia",  coords: [-70.234, 1.253],
+  { city: "Puerto Carreño",dept: "99", region: "orinoquia", coords: [-67.55, 6.12], route: true,
+    desc: "Ruta activa en Vichada dentro de la Fase 1." },
+  { city: "Mocoa",         dept: "86", region: "amazonia",  coords: [-76.647, 1.149], route: true,
+    desc: "Ruta activa en Putumayo dentro de la Fase 1." },
+  { city: "Mitú",          dept: "97", region: "amazonia",  coords: [-70.234, 1.253], route: true,
     areas: ["tecnologia","caracterizacion"],
     desc: "Etnoeducación y monitoreo de biodiversidad con drones y tecnología accesible." },
-  { city: "Leticia",       region: "amazonia",  coords: [-69.941, -4.215],
+  { city: "Leticia",       dept: "91", region: "amazonia",  coords: [-69.96, -4.12], route: true,
     areas: ["nucleos","tecnologia","formacion"],
-    desc: "De la Amazonia al Pacífico: núcleo insignia de desarrollo sostenible con comunidades originarias del trapecio amazónico." }
+    desc: "Núcleo insignia de desarrollo sostenible con comunidades originarias del trapecio amazónico." }
+];
+
+// ---------- Aliados ----------
+// logo: ruta a la imagen en assets/img/aliados/ (déjalo "" y se muestra el nombre).
+window.VN_ALIADOS = [
+  { nombre: "Universidad Nacional de Colombia", tipo: "Convenio de investigación", detalle: "Convenio con su centro de investigación: acompañamiento académico, investigación e inclusión.", logo: "" },
+  { nombre: "Globaltiz SAS", tipo: "Responsabilidad empresarial", detalle: "Empresa de apoyo a la gestión.", logo: "" },
+  { nombre: "Global Foods Trading", tipo: "Responsabilidad empresarial", detalle: "Empresa de apoyo a la gestión.", logo: "" },
+  { nombre: "FOAL — Fundación ONCE América Latina", tipo: "Cooperación", detalle: "Beneficiario institucional principal: personas con discapacidad visual.", logo: "" },
+  { nombre: "Programa Ágora (ONCE)", tipo: "Cooperación", detalle: "Inclusión laboral de personas con discapacidad visual.", logo: "" },
+  { nombre: "Paz Ventures", tipo: "Aliado estratégico", detalle: "Brazo empresarial y aliado estratégico del modelo.", logo: "" },
+  { nombre: "Tecnología para la Paz", tipo: "Aliado estratégico", detalle: "I+D: drones, satélites, IoT y DeepTech inclusivo.", logo: "" }
 ];
 
 window.VN_EVENTS = [
