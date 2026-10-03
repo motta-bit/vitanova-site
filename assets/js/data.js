@@ -142,11 +142,11 @@ window.VN_PROJECTS = [
 // ---------- Aliados ----------
 // logo: ruta a la imagen en assets/img/aliados/ (déjalo "" y se muestra el nombre).
 window.VN_ALIADOS = [
-  { nombre: "Universidad Nacional de Colombia", tipo: "Convenio de investigación", detalle: "Convenio con su centro de investigación: acompañamiento académico, investigación e inclusión.", logo: "" },
-  { nombre: "Globaltiz SAS", tipo: "Responsabilidad empresarial", detalle: "Empresa de apoyo a la gestión.", logo: "" },
-  { nombre: "Global Foods Trading", tipo: "Responsabilidad empresarial", detalle: "Empresa de apoyo a la gestión.", logo: "" },
-  { nombre: "FOAL — Fundación ONCE América Latina", tipo: "Cooperación", detalle: "Beneficiario institucional principal: personas con discapacidad visual.", logo: "" },
-  { nombre: "Programa Ágora (ONCE)", tipo: "Cooperación", detalle: "Inclusión laboral de personas con discapacidad visual.", logo: "" },
+  { nombre: "Universidad Nacional de Colombia", tipo: "Convenio de investigación", detalle: "Convenio con su centro de investigación: acompañamiento académico, investigación e inclusión.", logo: "assets/img/aliados/universidad-nacional.png" },
+  { nombre: "Globaltiz SAS", tipo: "Responsabilidad empresarial", detalle: "Empresa de apoyo a la gestión.", logo: "assets/img/aliados/globaltiz.png" },
+  { nombre: "Global Foods Trading", tipo: "Responsabilidad empresarial", detalle: "Empresa de apoyo a la gestión.", logo: "assets/img/aliados/global-foods-trading.png" },
+  { nombre: "FOAL — Fundación ONCE América Latina", tipo: "Cooperación", detalle: "Beneficiario institucional principal: personas con discapacidad visual.", logo: "assets/img/aliados/foal.png" },
+  { nombre: "Programa Ágora (ONCE)", tipo: "Cooperación", detalle: "Inclusión laboral de personas con discapacidad visual.", logo: "assets/img/aliados/agora.png" },
   { nombre: "Paz Ventures", tipo: "Aliado estratégico", detalle: "Brazo empresarial y aliado estratégico del modelo.", logo: "" },
   { nombre: "Tecnología para la Paz", tipo: "Aliado estratégico", detalle: "I+D: drones, satélites, IoT y DeepTech inclusivo.", logo: "" }
 ];
