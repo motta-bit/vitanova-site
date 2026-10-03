@@ -8,7 +8,7 @@ window.VN_WHATSAPP = "573009802268"; // botón flotante y servicio al cliente
 // Deja "" en las que aún no existan y no se mostrarán.
 window.VN_SOCIAL = {
   youtube:   "https://youtube.com/@asovitanova",
-  instagram: "https://www.instagram.com/vitanova_aso",
+  instagram: "https://www.instagram.com/vitanovacolombia",
   facebook:  "",
   tiktok:    "",
   linkedin:  ""
