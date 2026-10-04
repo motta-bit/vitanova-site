@@ -651,3 +651,8 @@ nav.on-dark:not(.solid) .nav-links a.active{background:rgba(255,255,255,.12);col
 .ally-logo{height:78px;width:auto;max-width:220px;object-fit:contain;object-position:left center;margin-bottom:1.1rem}
 .marquee-logo img{height:54px;width:auto;max-width:200px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
 .marquee-logo:hover img{filter:none;opacity:1}
+
+/* Videos: horizontal + vertical lado a lado */
+.video-grid-mix{grid-template-columns:2.2fr 1fr;align-items:center}
+.video-vertical video{aspect-ratio:9/16;max-height:72vh;object-fit:contain}
+@media (max-width:760px){.video-grid-mix{grid-template-columns:1fr}.video-vertical{max-width:340px;margin:0 auto}}

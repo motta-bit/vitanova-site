@@ -63,7 +63,7 @@
       [".stat-band-item .l", ["municipalities across Colombia prioritized in Phase 1", "Colombian departments in Phase 1", "inclusive development hubs projected", "beneficiary families with their own productive model"]],
       ["#video-home .section-label", "New life"],
       ["#video-home h2", "For those the world forgot"],
-      ["#video-home p", "Inclusion · Education · High-impact entrepreneurship. Discover in 30 seconds what we do and why we do it."],
+      ["#video-home p", "Inclusion · Education · High-impact entrepreneurship. Discover in one minute what we do and why we do it."],
       ["#vida .section-label", "Our community"],
       ["#vida h2", "The lives we transform, in motion"],
       ["#vida .section-center p", null, function (el) { el.innerHTML = 'Every bubble is a real moment of our community. See more in the <a href="galeria.html" style="color:var(--teal-deep)">full gallery</a>.'; }],
@@ -181,7 +181,7 @@
       [".ph-sub", "Real moments of our community — people, processes and transformations."],
       [".gallery-tab", ["All", "Professional session", "Community"]],
       ["#videos h2", "Vita Nova in motion"],
-      [".video-card figcaption", ["Institutional ad · 30 s", "Our identity"]]
+      [".video-card figcaption", ["Opening video · 1 min", "Vertical version for mobile"]]
     ],
     "eventos.html": [
       [".page-hero .section-label", "Agenda"],
