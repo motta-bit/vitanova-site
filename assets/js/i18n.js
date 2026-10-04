@@ -233,7 +233,7 @@
       [".page-hero h1", "Contact us"],
       [".ph-sub", "Want to join, contribute, donate or ask something? We are here for you."],
       ["#contacto h2", "Always close to you"],
-      [".contact-item h4", ["Address", "WhatsApp", "Email"]],
+      [".contact-item h4", ["Address", "WhatsApp", "Email", "Social media"]],
       [".contact-form h3", "Write to us"],
       ['.contact-form label[for="c-nombre"]', "Full name"],
       ['.contact-form label[for="c-email"]', "Email address"],
