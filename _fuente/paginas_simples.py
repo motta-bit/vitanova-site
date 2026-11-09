@@ -1,0 +1,160 @@
+# Genera legal.html y 404.html con la identidad de la página única.
+# Uso:  python _fuente/paginas_simples.py
+from pathlib import Path
+
+F = Path(__file__).parent
+RAIZ = F.parent
+logo = (F / "logo.svg").read_text(encoding="utf-8")
+fav = (F / "favicon.txt").read_text(encoding="utf-8")
+
+CSS = """
+:root{--bg:#F5F2EB;--paper:#FBF9F4;--ink:#0F2E26;--ink-soft:#3D5A51;--ink-faint:#6A8178;--accent:#1C7F60;--line:rgba(15,46,38,.14);--line-strong:rgba(15,46,38,.30);--ring:#DAD8CC;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0B1F1A;--paper:#0F2A23;--ink:#F2EFE7;--ink-soft:#C3D2CA;--ink-faint:#8CA69B;--accent:#55CB81;--line:rgba(242,239,231,.13);--line-strong:rgba(242,239,231,.26);--ring:#2A4A40;color-scheme:dark}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Montserrat',system-ui,sans-serif;font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+h1,h2{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.06;margin:0}
+.vn-logo .lg-ring{fill:var(--ring)}.vn-logo .lg-g{fill:#2C8914}.vn-logo .lg-t{fill:#229B76}.vn-logo .lg-gi{fill:#2DB962}.vn-logo .lg-ti{fill:#55CB81}
+.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar div{max-width:1240px;margin:0 auto;padding:10px clamp(16px,5vw,56px);display:flex;justify-content:space-between;align-items:center;gap:14px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:'DM Serif Display',serif;font-size:1.12rem}
+.mark .vn-logo{width:34px;height:auto}
+.pill{display:inline-block;border:1px solid var(--line-strong);border-radius:999px;padding:7px 14px;font-size:.74rem;font-weight:700;text-decoration:none;color:var(--ink)}
+.kicker{font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+"""
+
+
+def head(title, extra=""):
+    return f"""<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{extra}<title>{title}</title>
+<link rel="icon" href="{fav}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>{CSS}"""
+
+
+LEGAL = head(
+    "Información legal | Vita Nova Colombia",
+    '<meta name="description" content="Política de privacidad, tratamiento de datos personales (Ley 1581 de 2012), términos de uso y almacenamiento local del sitio de la Asociación Vita Nova Colombia.">\n'
+    '<link rel="canonical" href="https://vitanovacolombia.org/legal.html">\n',
+) + """
+main{max-width:820px;margin:0 auto;padding:clamp(40px,8vw,90px) clamp(16px,5vw,56px) 90px}
+h1{font-size:clamp(2.4rem,6vw,4rem);margin-top:14px}
+.updated{color:var(--ink-faint);font-size:.85rem;margin:10px 0 36px}
+h2{font-size:clamp(1.5rem,3vw,2.1rem);margin:56px 0 14px;padding-top:22px;border-top:1px solid var(--line-strong);scroll-margin-top:70px}
+h3{font-size:1rem;margin:26px 0 6px}
+p,li{color:var(--ink-soft);font-size:.96rem}
+.toc{border:1px solid var(--line-strong);background:var(--paper);padding:18px 22px;display:grid;gap:4px}
+.toc a{text-decoration:none;font-weight:600;font-size:.9rem}
+footer{border-top:1px solid var(--line);padding:24px clamp(16px,5vw,56px);text-align:center;font-size:.78rem;color:var(--ink-faint)}
+</style>
+</head>
+<body>
+<header class="bar"><div><a class="mark" href="./">""" + logo + """<span>Vita Nova</span></a><a class="pill" href="./">← Volver al inicio</a></div></header>
+<main>
+  <div class="kicker">Asociación Vita Nova Colombia</div>
+  <h1>Información legal</h1>
+  <p class="updated">Última actualización: noviembre de 2026</p>
+  <nav class="toc" aria-label="Contenido">
+    <a href="#privacidad">1. Política de privacidad</a>
+    <a href="#datos">2. Tratamiento de datos personales (Ley 1581 de 2012)</a>
+    <a href="#terminos">3. Términos y condiciones de uso</a>
+    <a href="#cookies">4. Cookies y almacenamiento local</a>
+    <a href="#derechos">5. Derechos de los titulares y canales de atención</a>
+  </nav>
+
+  <h2 id="privacidad">1. Política de privacidad</h2>
+  <p>La <strong>Asociación Vita Nova Colombia</strong> (en adelante, "Vita Nova"), NIT 901.778.613-2, con domicilio en Av. El Poblado N° 1-50, piso 6, Medellín, Antioquia, Colombia, es responsable del tratamiento de los datos personales que recibe a través de este sitio web y de sus canales de contacto.</p>
+  <p>Este sitio no tiene registro de usuarios ni formularios que guarden información. Los datos nos llegan solo cuando nos escribes por WhatsApp o por correo electrónico: tu nombre, tu número o correo y lo que decidas contarnos sobre tu caso o tu organización.</p>
+  <h3>Finalidades del tratamiento</h3>
+  <ul>
+    <li>Responder tus mensajes y enviarte la información que solicitas.</li>
+    <li>Orientarte sobre la ruta, los programas y el territorio más cercano.</li>
+    <li>Atender necesidades de accesibilidad y ajustes razonables que nos informes.</li>
+    <li>Gestionar alianzas, donaciones y la emisión de certificados de donación.</li>
+    <li>Elaborar estadísticas internas de gestión, de forma agregada y anonimizada cuando sea posible.</li>
+  </ul>
+  <p>Los datos no se venden ni se ceden a terceros con fines comerciales. Solo se comparten con aliados operativos cuando es estrictamente necesario para prestar el servicio, o por requerimiento legal de autoridad competente.</p>
+
+  <h2 id="datos">2. Tratamiento de datos personales — Ley 1581 de 2012</h2>
+  <p>En cumplimiento de la <strong>Ley Estatutaria 1581 de 2012</strong>, el <strong>Decreto 1377 de 2013</strong> y demás normas concordantes, Vita Nova actúa como <strong>Responsable del Tratamiento</strong> y garantiza los principios de legalidad, finalidad, libertad, veracidad, transparencia, acceso y circulación restringida, seguridad y confidencialidad.</p>
+  <h3>Autorización</h3>
+  <p>Al escribirnos y suministrar tus datos autorizas su tratamiento para las finalidades descritas. Puedes revocar esta autorización en cualquier momento por los canales de atención.</p>
+  <h3>Datos sensibles</h3>
+  <p>La información sobre condición de discapacidad o necesidades de accesibilidad es <strong>dato sensible</strong>. Su suministro es <strong>facultativo</strong> y solo se usa para garantizar ajustes razonables y una atención digna e incluyente. No estás obligado a entregarla y tu negativa no impide el acceso a los servicios.</p>
+  <h3>Datos de menores</h3>
+  <p>El tratamiento de datos de niños, niñas y adolescentes solo se realiza con autorización de su representante legal y en respeto del interés superior del menor.</p>
+  <h3>Seguridad y conservación</h3>
+  <p>Los datos se conservan mientras dure la relación con el titular y los términos legales aplicables; después se suprimen o anonimizan.</p>
+
+  <h2 id="terminos">3. Términos y condiciones de uso</h2>
+  <ul>
+    <li>El contenido de este sitio (textos, fotografías, marca y materiales institucionales) es propiedad de Vita Nova o se usa con autorización, y no puede reproducirse con fines comerciales sin permiso escrito.</li>
+    <li>La información sobre programas, cifras y proyecciones tiene carácter informativo institucional y puede actualizarse sin previo aviso.</li>
+    <li>Las cifras de inversión son referenciales; las condiciones de cada alianza se formalizan en un acuerdo específico.</li>
+  </ul>
+
+  <h2 id="cookies">4. Cookies y almacenamiento local</h2>
+  <p>Este sitio no usa cookies publicitarias ni de seguimiento. Solo guarda en tu navegador:</p>
+  <ul>
+    <li><strong>Preferencias:</strong> idioma, tema claro u oscuro y alto contraste, para recordarlos en tu próxima visita.</li>
+    <li><strong>Presentación vista:</strong> una marca temporal para no repetir el video de apertura durante la misma visita.</li>
+    <li><strong>Fuentes tipográficas:</strong> se cargan desde Google Fonts, que puede registrar la solicitud técnica de descarga.</li>
+  </ul>
+
+  <h2 id="derechos">5. Derechos de los titulares y canales de atención</h2>
+  <p>Tienes derecho a conocer, actualizar y rectificar tus datos; solicitar prueba de la autorización; ser informado sobre su uso; presentar quejas ante la <strong>Superintendencia de Industria y Comercio (SIC)</strong>; revocar la autorización y solicitar la supresión cuando no exista un deber legal o contractual que lo impida; y acceder gratuitamente a tus datos.</p>
+  <h3>Canales de atención</h3>
+  <ul>
+    <li>Correo: <a href="mailto:admin@vitanovacolombia.org?subject=Protecci%C3%B3n%20de%20datos">admin@vitanovacolombia.org</a> (asunto: "Protección de datos")</li>
+    <li>WhatsApp: <a href="https://wa.me/573009802268">300 980 2268</a></li>
+    <li>Dirección: Av. El Poblado N° 1-50, piso 6, Medellín, Antioquia, Colombia</li>
+  </ul>
+  <p>Las consultas se atienden en un término máximo de diez (10) días hábiles y los reclamos en quince (15) días hábiles, conforme a los artículos 14 y 15 de la Ley 1581 de 2012.</p>
+</main>
+<footer>Asociación Vita Nova Colombia · NIT 901.778.613-2 · Inclusión · Formación · Paz</footer>
+</body>
+</html>
+"""
+
+NO_EXISTE = head("Página no encontrada | Vita Nova Colombia", '<meta name="robots" content="noindex">\n') + """
+body{min-height:100vh;display:grid;place-items:center;text-align:center;padding:32px 16px}
+main{max-width:520px}
+main .vn-logo{width:110px;height:auto;margin:0 auto 22px;display:block}
+h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:12px 0 14px}
+p{color:var(--ink-soft);margin:0 auto 28px}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center}
+.cta{display:inline-block;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.9rem;background:#2C8914;color:#fff}
+</style>
+<script>
+/* El sitio pasó a ser una sola página y las páginas viejas se borraron:
+   sus direcciones (las que Google ya conoce) se llevan a su sección. */
+(function () {
+  var M = { "nosotros": "nosotros", "programas": "metodo", "nucleos": "nucleos", "mapa": "territorios", "galeria": "territorios",
+            "eventos": "participar", "apoyar": "participar", "empresas": "participar", "contacto": "contacto" };
+  var k = location.pathname.split("/").pop().replace(/\\.html$/, "");
+  if (M[k]) location.replace("/#" + M[k]);
+})();
+</script>
+</head>
+<body>
+<main>
+  """ + logo + """
+  <div class="kicker">Error 404</div>
+  <h1>Esta página no existe</h1>
+  <p>Puede que el enlace haya cambiado. Todo lo de Vita Nova está ahora en una sola página.</p>
+  <div class="row"><a class="cta" href="/">Ir al inicio</a><a class="pill" href="/#contacto">Contáctanos</a></div>
+</main>
+</body>
+</html>
+"""
+
+(RAIZ / "legal.html").write_text(LEGAL, encoding="utf-8")
+(RAIZ / "404.html").write_text(NO_EXISTE, encoding="utf-8")
+print("legal.html y 404.html listos")
