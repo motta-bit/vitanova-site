@@ -79,8 +79,76 @@ window.VN_DEPT_REGION = {
   "18":"amazonia","86":"amazonia","91":"amazonia","94":"amazonia","95":"amazonia","97":"amazonia"
 };
 
-// Departamentos con presencia activa de Vita Nova (código DANE). Fase 1: 17 departamentos.
-window.VN_ACTIVE_DEPTS = ["44","47","08","13","20","05","25","70","23","52","91","97","99","86","19","68","15"];
+// Departamentos con presencia activa de Vita Nova (código DANE): la sede en Antioquia
+// y los 16 territorios donde se trabaja.
+window.VN_ACTIVE_DEPTS = ["05","44","47","08","13","20","70","23","25","11","52","97","99","76","41","73","91"];
+
+// Módulos del modelo. Son los mismos que muestra el mapa en cada territorio.
+window.VN_MODULOS = {
+  caracterizacion: "Caracterización y acompañamiento",
+  formacion:       "Formación inclusiva",
+  empleabilidad:   "Empleabilidad",
+  nucleos:         "Núcleos de desarrollo",
+  tecnologia:      "Tecnología para la Paz",
+  sensibilizacion: "Sensibilización"
+};
+
+// Territorios del mapa interactivo de la página principal.
+// estado: "sede" | "activo" (núcleo activo) | "creacion" (núcleo en creación) | "ruta" (ruta activa)
+// lugar: [lon, lat] del punto; se proyecta al mapa en la página.
+window.VN_TERRITORIOS = [
+  { dpto: "05", nombre: "Antioquia",       lugar: "Medellín · sede",             coords: [-75.574, 6.244],  estado: "sede",
+    modulos: ["caracterizacion","formacion","empleabilidad","nucleos","tecnologia","sensibilizacion"],
+    texto: "Sede institucional en Medellín. Desde aquí salen las rutas hacia cada territorio y se coordinan todos los módulos." },
+  { dpto: "44", nombre: "La Guajira",      lugar: "Maicao y Riohacha",           coords: [-72.24, 11.38],   estado: "activo",
+    modulos: ["caracterizacion","nucleos","formacion"],
+    texto: "Zona fronteriza y de alta diversidad étnica: caracterización psicosocial y núcleos de desarrollo con comunidades wayuu y población migrante." },
+  { dpto: "47", nombre: "Magdalena",       lugar: "Santa Marta",                 coords: [-74.199, 11.241], estado: "creacion",
+    modulos: ["formacion","sensibilizacion"],
+    texto: "Turismo accesible y formación gastronómica y de servicios para poblaciones vulnerables." },
+  { dpto: "08", nombre: "Atlántico",       lugar: "Barranquilla",                coords: [-74.796, 10.964], estado: "creacion",
+    modulos: ["empleabilidad","nucleos","tecnologia"],
+    texto: "Modelo productivo portuario y logístico inclusivo, con tecnología y accesibilidad." },
+  { dpto: "13", nombre: "Bolívar",         lugar: "Magangué",                    coords: [-74.754, 9.24],   estado: "activo",
+    modulos: ["formacion","tecnologia"],
+    texto: "Presencia en el Caribe interior, sobre el río Magdalena, con procesos de inclusión social y formación técnica." },
+  { dpto: "20", nombre: "Cesar",           lugar: "Valledupar",                  coords: [-73.253, 10.464], estado: "creacion",
+    modulos: ["formacion","caracterizacion"],
+    texto: "Núcleo en creación: caracterización de familias y formación inclusiva." },
+  { dpto: "70", nombre: "Sucre",           lugar: "Sincelejo",                   coords: [-75.398, 9.305],  estado: "ruta",
+    modulos: ["caracterizacion","formacion"],
+    texto: "Ruta activa: caracterización de familias y formación con ajustes razonables." },
+  { dpto: "23", nombre: "Córdoba",         lugar: "Montería",                    coords: [-75.881, 8.748],  estado: "ruta",
+    modulos: ["caracterizacion","formacion"],
+    texto: "Ruta activa: caracterización de familias y formación con ajustes razonables." },
+  { dpto: "25", nombre: "Cundinamarca",    lugar: "Anapoima",                    coords: [-74.536, 4.55],   estado: "activo",
+    modulos: ["formacion","caracterizacion"],
+    texto: "Formación y acompañamiento comunitario en el centro del país, punto de entrada de la ruta del proyecto." },
+  { dpto: "11", nombre: "Bogotá D.C.",     lugar: "Bogotá",                      coords: [-74.072, 4.711],  estado: "ruta",
+    modulos: ["formacion","sensibilizacion"],
+    texto: "Ruta activa: formación inclusiva y sensibilización con organizaciones." },
+  { dpto: "73", nombre: "Tolima",          lugar: "Ibagué",                      coords: [-75.232, 4.438],  estado: "ruta",
+    modulos: ["caracterizacion","formacion"],
+    texto: "Ruta activa: caracterización de familias y formación con ajustes razonables." },
+  { dpto: "41", nombre: "Huila",           lugar: "Neiva",                       coords: [-75.282, 2.927],  estado: "ruta",
+    modulos: ["caracterizacion","formacion"],
+    texto: "Ruta activa: caracterización de familias y formación con ajustes razonables." },
+  { dpto: "76", nombre: "Valle del Cauca", lugar: "Cali",                        coords: [-76.532, 3.452],  estado: "ruta",
+    modulos: ["caracterizacion","formacion","empleabilidad"],
+    texto: "Ruta activa: caracterización, formación y vinculación laboral." },
+  { dpto: "52", nombre: "Nariño",          lugar: "Pasto",                       coords: [-77.277, 1.209],  estado: "ruta",
+    modulos: ["formacion","nucleos"],
+    texto: "Bachillerato inclusivo por ciclos y núcleos de economía solidaria andino-pacífica." },
+  { dpto: "99", nombre: "Vichada",         lugar: "Puerto Carreño",              coords: [-67.55, 6.12],    estado: "ruta",
+    modulos: ["nucleos","tecnologia"],
+    texto: "Núcleos agropecuarios inclusivos y conectividad satelital para formación remota." },
+  { dpto: "97", nombre: "Vaupés",          lugar: "Mitú",                        coords: [-70.234, 1.253],  estado: "ruta",
+    modulos: ["tecnologia","caracterizacion"],
+    texto: "Etnoeducación y monitoreo de biodiversidad con drones y tecnología accesible." },
+  { dpto: "91", nombre: "Amazonas",        lugar: "Puerto Nariño y Leticia",     coords: [-70.36, -3.77],   estado: "activo",
+    modulos: ["nucleos","formacion","tecnologia","caracterizacion"],
+    texto: "Cerca de 9.000 personas indígenas en 23 comunidades, con educación por competencias y un núcleo de desarrollo sostenible." }
+];
 
 // Nombres bonitos por código (el GeoJSON trae mayúsculas y sin tildes)
 window.VN_DEPT_NAME = {
@@ -142,7 +210,7 @@ window.VN_PROJECTS = [
 // ---------- Aliados ----------
 // logo: ruta a la imagen en assets/img/aliados/ (déjalo "" y se muestra el nombre).
 window.VN_ALIADOS = [
-  { nombre: "Universidad Nacional de Colombia", tipo: "Convenio de investigación", detalle: "Convenio con su centro de investigación: acompañamiento académico, investigación e inclusión.", logo: "assets/img/aliados/universidad-nacional.png" },
+  { nombre: "Universidad Nacional de Colombia", tipo: "Convenio de investigación", detalle: "Convenio 037 de 2024 con el Centro de Excelencia: investigación, pasantes y especialistas, y verificación de que los impactos sean positivos y medibles.", logo: "assets/img/aliados/universidad-nacional.png" },
   { nombre: "Globaltiz SAS", tipo: "Responsabilidad empresarial", detalle: "Empresa de apoyo a la gestión.", logo: "assets/img/aliados/globaltiz.png" },
   { nombre: "Global Foods Trading", tipo: "Responsabilidad empresarial", detalle: "Empresa de apoyo a la gestión.", logo: "assets/img/aliados/global-foods-trading.png" },
   { nombre: "FOAL — Fundación ONCE América Latina", tipo: "Cooperación", detalle: "Beneficiario institucional principal: personas con discapacidad visual.", logo: "assets/img/aliados/foal.png" },

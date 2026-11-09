@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{{SEO}}
+<title>Vita Nova Colombia | ONG de inclusión para personas con discapacidad</title>
+<link rel="icon" href="{{FAVICON}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+{{CSS_DOSSIER}}
+{{CSS_MAPA}}
+{{CSS_PROPIO}}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#portada">Saltar al contenido principal</a>
+
+<!-- La presentación sale una sola vez por visita; si ya se vio, la página abre directo. -->
+<script>(function(){var seen=false;try{seen=sessionStorage.getItem('vn_intro')==='1';}catch(e){}if(!seen){document.documentElement.classList.add('intro-on');setTimeout(function(){if(!window.__vnIntroReady){document.documentElement.classList.remove('intro-on');}},5000);}else{document.documentElement.classList.add('page-open','no-intro');}})();</script>
+
+<!-- ============ INTRO: VIDEO DE PRESENTACIÓN ============ -->
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Video de presentación de Vita Nova">
+  <img class="intro-backdrop" src="assets/img/apertura-poster-h.jpg" alt="" aria-hidden="true">
+  <div class="intro-bar top">
+    <div class="intro-brand on-dark">{{LOGO}}<span>Vita Nova</span></div>
+    <div class="intro-tools">
+      <button class="intro-btn" id="introSound" type="button" aria-pressed="false">Activar sonido</button>
+      <button class="intro-btn" id="introSkip" type="button">Entrar <span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+  <div class="intro-stage">
+    <video id="introVideo" src="assets/video/apertura_horizontal.mp4" poster="assets/img/apertura-poster-h.jpg" muted playsinline preload="auto"></video>
+  </div>
+  <div class="intro-start on-dark" id="introStart" hidden>
+    {{LOGO}}
+    <p>Nadie camina solo.</p>
+    <div class="row">
+      <button class="intro-btn primary" id="introPlay" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Ver presentación · 1 min</button>
+      <button class="intro-btn" id="introEnter" type="button">Entrar a la página</button>
+    </div>
+  </div>
+  <p class="intro-rotate">Gira el teléfono para ver el video en grande</p>
+  <div class="intro-bar bottom">
+    <div class="intro-progress" aria-hidden="true"><i id="introProgress"></i></div>
+    <div class="intro-hint"><span>Video de presentación</span><span id="introTime">0:59</span></div>
+  </div>
+</div>
+
+<!-- ============ BARRA SUPERIOR ============ -->
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a class="mark" href="#portada" aria-label="Vita Nova — volver a la portada">{{LOGO}}<span class="mark-word">Vita Nova</span></a>
+    <div class="running" id="running">Portada</div>
+    <div class="controls">
+      <a class="pill-btn hide-sm" href="#indice">Índice</a>
+      <button class="pill-btn" data-lang-toggle type="button" aria-label="Cambiar idioma / Change language" title="English">EN</button>
+      <button class="pill-btn" data-contrast-toggle type="button" aria-pressed="false" title="Alto contraste">AA</button>
+      <button class="icon-btn" data-theme-toggle type="button" aria-label="Cambiar tema" title="Cambiar tema">
+        <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+      </button>
+    </div>
+  </div>
+  <div class="progress-rail"><div class="progress-bar" id="progressBar"></div></div>
+</header>
+
+<div class="page" id="page">
+<main>
+
+  <!-- ============ PORTADA ============ -->
+  <section class="cover" id="portada" data-chapter="Portada">
+    <div class="cover-text">
+      <div class="enter d1">
+        <div class="cover-head">
+          <div class="nameplate">
+            {{LOGO}}
+            <div>
+              <div class="nameplate-word">Vita Nova</div>
+              <span class="nameplate-tag">INCLUSIÓN · FORMACIÓN · PAZ</span>
+            </div>
+          </div>
+          <div class="cover-tools">
+            <a class="pill-btn" href="#indice">Índice</a>
+            <button class="pill-btn" data-lang-toggle type="button" aria-label="Cambiar idioma / Change language" title="English">EN</button>
+            <button class="pill-btn" data-contrast-toggle type="button" aria-pressed="false" title="Alto contraste">AA</button>
+            <button class="icon-btn" data-theme-toggle type="button" aria-label="Cambiar tema" title="Cambiar tema">
+              <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+            </button>
+          </div>
+        </div>
+        <div class="issue-line"><span>Asociación Vita Nova Colombia</span><span>Fundada por personas con discapacidad</span><span>Medellín, Colombia</span></div>
+      </div>
+
+      <div>
+        <h1 class="word-reveal">Nadie camina <em>solo.</em></h1>
+        <p class="dek enter d2">Inclusión, formación y paz escritas en el territorio. Acompañamos a cada persona, familia y comunidad hasta que camina por sí misma, de La Guajira al Amazonas.</p>
+        <div class="cover-actions enter d2">
+          <a class="cta" data-wa="Hola, quiero contarles mi caso y recibir más información." href="#contacto">Cuéntanos tu caso <span aria-hidden="true">→</span></a>
+          <a class="cta ghost" href="#video">Ver presentación · 1 min</a>
+        </div>
+      </div>
+
+      <div class="enter d3">
+        <nav class="coverlines" aria-label="Temas de esta página">
+          <a class="coverline" href="#territorios"><small>03</small><b>Un mapa, diecisiete territorios</b><span>De La Guajira al Amazonas</span></a>
+          <a class="coverline" href="#cifras"><small>02</small><b>+4 millones de razones</b><span>El diagnóstico que nos mueve</span></a>
+          <a class="coverline" href="#nucleos"><small>05</small><b>650 núcleos</b><span>Comunidades dueñas de lo que producen</span></a>
+          <a class="coverline" href="#participar"><small>08</small><b>Hay un lugar para cada uno</b><span>Personas, empresas y aliados</span></a>
+        </nav>
+        <a class="scroll-cue" href="#indice" style="margin-top:22px;"><i></i> Recorrer la página</a>
+      </div>
+    </div>
+    <div class="cover-photo enter d1">
+      <img src="assets/revista/portada.jpg" alt="Mujer en silla de ruedas sonríe durante una jornada de sensibilización; detrás, participantes con antifaces y bastones guía" fetchpriority="high">
+      <div class="cover-caption">En portada — jornada de sensibilización sobre discapacidad visual y movilidad.</div>
+    </div>
+    <div class="deco-ring cover-ring" data-parallax="-0.12" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============ ÍNDICE ============ -->
+  <section class="article paper tight" id="indice" data-chapter="Índice">
+    <div class="deco-ring" style="width:clamp(260px,40vw,560px);aspect-ratio:1;right:-12%;top:-18%;" data-parallax="0.1" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="toc-grid">
+        <div>
+          <div class="kicker reveal">En esta página</div>
+          <h2 class="word-reveal" style="font-size:clamp(2.4rem,5vw,4.2rem); margin:16px 0 34px;">Índice</h2>
+          <ol class="toc-list">
+            <li class="reveal"><a href="#nosotros"><span class="tn">01</span><span class="tt">Quiénes somos<span class="ts">El problema no es de talento</span></span><span class="ta">Leer</span></a></li>
+            <li class="reveal"><a href="#cifras"><span class="tn">02</span><span class="tt">Las cifras<span class="ts">Lo que nadie más ve</span></span><span class="ta">Leer</span></a></li>
+            <li class="reveal"><a href="#territorios"><span class="tn">03</span><span class="tt">Territorios<span class="ts">Mapa interactivo y cuaderno de campo</span></span><span class="ta">Leer</span></a></li>
+            <li class="reveal"><a href="#metodo"><span class="tn">04</span><span class="tt">Cómo trabajamos<span class="ts">El Par Amigo y los seis módulos</span></span><span class="ta">Leer</span></a></li>
+            <li class="reveal"><a href="#nucleos"><span class="tn">05</span><span class="tt">Los núcleos<span class="ts">Comunidades dueñas de lo que producen</span></span><span class="ta">Leer</span></a></li>
+            <li class="reveal"><a href="#cartilla"><span class="tn">06</span><span class="tt">Instrumento propio<span class="ts">Cartilla de Acondicionamiento Académico 7.0</span></span><span class="ta">Leer</span></a></li>
+            <li class="reveal"><a href="#alianzas"><span class="tn">07</span><span class="tt">Alianzas<span class="ts">No se trabaja solo</span></span><span class="ta">Leer</span></a></li>
+            <li class="reveal"><a href="#participar"><span class="tn">08</span><span class="tt">Participar<span class="ts">Personas, empresas y donantes</span></span><span class="ta">Leer</span></a></li>
+            <li class="reveal"><a href="#contacto"><span class="tn">09</span><span class="tt">Contacto<span class="ts">Conversemos</span></span><span class="ta">Leer</span></a></li>
+          </ol>
+        </div>
+        <figure class="reveal">
+          <div class="ph r-4x5 reveal-img"><img src="assets/revista/indice.jpg" alt="Dos voluntarias guían a un participante con antifaz durante un ejercicio de confianza" data-parallax="0.06" loading="lazy"></div>
+          <figcaption><b>Fig.</b><span>Ejercicio de confianza: ponerse en el lugar del otro es el primer paso.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 · QUIÉNES SOMOS ============ -->
+  <section class="article" id="nosotros" data-chapter="01 · Quiénes somos">
+    <div class="big-folio" aria-hidden="true" data-parallax="0.08">01</div>
+    <div class="wrap">
+      <header class="feature-head">
+        <div class="kicker reveal"><span class="folio">01</span><span class="rule"></span>Quiénes somos</div>
+        <h2 class="word-reveal">El problema no es de talento. Es de <em>estructura.</em></h2>
+      </header>
+      <div class="cols reveal">
+        <p class="dropcap">Vita Nova es una organización social sin ánimo de lucro con sede en Medellín, fundada por personas con discapacidad. No llegamos a las comunidades desde afuera: somos parte de ellas. Trabajamos con personas con discapacidad, comunidades indígenas y poblaciones vulnerables, y también con sus familias y cuidadores.</p>
+        <p>En los territorios donde trabajamos coinciden la pobreza estructural, la inseguridad alimentaria y la desprotección del ecosistema. Sobre esa base, la discapacidad añade barreras físicas, comunicativas y actitudinales que dejan a la persona fuera del sistema educativo, del mercado laboral y, con frecuencia, de la vida comunitaria.</p>
+        <p>Nuestra misión es restituir de manera integral esos derechos mediante acompañamiento emocional, formación con ajustes razonables, tecnología accesible y unidades productivas de economía solidaria. Nuestra visión es una red nacional de comunidades autónomas y productivas, en la que la inclusión deje de ser un programa y se convierta en la estructura misma de la economía local.</p>
+        <p>Trabajamos sin financiación estatal. Nos sostienen la autogestión, las alianzas con empresas, la responsabilidad social empresarial y la cooperación internacional. Nuestro lema lo resume: <em>Inclusión, Formación y Paz.</em></p>
+      </div>
+      <div class="pull reveal">
+        <blockquote>Ningún territorio es pobre por falta de talento. Lo es por falta de estructuras que permitan a ese talento convertirse en <em>ingreso, propiedad y decisión.</em></blockquote>
+        <cite>Asociación Vita Nova Colombia</cite>
+      </div>
+
+      <div class="kicker reveal" style="margin:clamp(56px,8vw,96px) 0 22px;">Lo que nos guía</div>
+      <div class="nucleos values">
+        <div class="nucleo reveal"><div class="n">01</div><h3>Inclusión real</h3><p>Integración sin etiquetas. Todos somos personas con plena dignidad.</p></div>
+        <div class="nucleo reveal d1"><div class="n">02</div><h3>Formación integral</h3><p>Desde el ser, el saber y el hacer: primero se fortalece, luego se forma y después produce.</p></div>
+        <div class="nucleo reveal d2"><div class="n">03</div><h3>Tecnología para la paz</h3><p>Herramientas accesibles como motor de equidad y sostenibilidad.</p></div>
+        <div class="nucleo reveal d3"><div class="n">04</div><h3>Economías solidarias</h3><p>Modelos productivos cuya riqueza se queda en la comunidad.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VIDEO ============ -->
+  <section class="article forest tight film" id="video" data-chapter="Presentación">
+    <div class="deco-ring" style="width:clamp(240px,34vw,500px);aspect-ratio:1;left:-12%;top:-30%;border-color:rgba(85,203,129,.10);" data-parallax="0.1" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="film-grid">
+        <div>
+          <div class="kicker reveal">Presentación</div>
+          <h2 class="word-reveal" style="font-size:clamp(2.4rem,5.4vw,4.6rem); margin-top:14px;">Nueva <em>vida.</em></h2>
+          <p class="dek reveal" style="margin-top:18px;">En un minuto: quiénes somos, a quién acompañamos y cómo trabajamos en el territorio.</p>
+        </div>
+        <figure class="film-frame reveal d1">
+          <video id="filmVideo" controls playsinline preload="none" poster="assets/img/apertura-poster-h.jpg" aria-label="Video de presentación de Vita Nova"></video>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 · LAS CIFRAS ============ -->
+  <section class="scrolly" id="cifras" data-chapter="02 · Las cifras">
+    <div class="scrolly-media"><img src="assets/revista/cifras.jpg" alt="Auditorio con participantes usando antifaces durante un ejercicio de sensibilización" loading="lazy"></div>
+    <div class="step-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="scrolly-steps">
+      <div class="step"><div class="wrap"><div class="step-card reveal">
+        <div class="kicker"><span class="folio">02</span><span class="rule"></span>Las cifras</div>
+        <h2>Lo que nadie más <em>ve.</em></h2>
+        <p>La discapacidad en Colombia no es un asunto marginal: es una brecha estructural de ingreso, educación y salud.</p>
+      </div></div></div>
+      <div class="step"><div class="wrap"><div class="step-card reveal">
+        <span class="stat num"><em>+</em><span class="count" data-to="4000000">4.000.000</span></span>
+        <p>personas con discapacidad en Colombia.</p>
+      </div></div></div>
+      <div class="step"><div class="wrap"><div class="step-card reveal">
+        <span class="stat num"><span class="count" data-to="95">95</span><em>%</em></span>
+        <p>no tiene un ingreso formal estable. Solo el 5% lo tiene.</p>
+      </div></div></div>
+      <div class="step"><div class="wrap"><div class="step-card reveal">
+        <span class="stat num"><span class="count" data-to="60">60</span><em>%+</em></span>
+        <p>no ha terminado el bachillerato.</p>
+      </div></div></div>
+      <div class="step"><div class="wrap"><div class="step-card reveal">
+        <span class="stat">Rural<em>.</em></span>
+        <p>Fuera de las ciudades, la cobertura de salud especializada es deficiente: el territorio decide quién recibe atención.</p>
+      </div></div></div>
+    </div>
+  </section>
+
+  <section class="article paper tight" data-chapter="02 · Las cifras">
+    <div class="wrap">
+      <header class="feature-head">
+        <div class="kicker reveal">Tres vulneraciones que se refuerzan</div>
+      </header>
+      <div class="triad">
+        <div class="triad-item reveal"><div class="n">i.</div><h3>Pobreza</h3><p>Ausencia de ingreso estable e imposibilidad de acumular activos, agravada por intermediarios que capturan el margen de la producción local.</p></div>
+        <div class="triad-item reveal d1"><div class="n">ii.</div><h3>Seguridad alimentaria</h3><p>Dietas insuficientes y pérdida de cultivos y prácticas alimentarias propias del territorio.</p></div>
+        <div class="triad-item reveal d2"><div class="n">iii.</div><h3>Desequilibrio ecosistémico</h3><p>Vivienda precaria, acceso deficiente a agua potable y presión sobre los ecosistemas por actividades de subsistencia.</p></div>
+      </div>
+      <p class="note reveal">Colombia ratificó la Convención de la ONU sobre los Derechos de las Personas con Discapacidad (Ley 1346 de 2009). Vita Nova trabaja para que esos derechos se cumplan en el territorio.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 · TERRITORIOS ============ -->
+  <section class="opener" id="territorios" data-chapter="03 · Territorios">
+    <div class="opener-media"><img src="assets/revista/territorio.jpg" alt="Asamblea comunitaria bajo un kiosco en un territorio rural" data-parallax="0.12" loading="lazy"></div>
+    <div class="wrap">
+      <div class="kicker reveal"><span class="folio">03</span><span class="rule"></span>Territorios</div>
+      <h2 class="word-reveal">De La Guajira <em>al Amazonas.</em></h2>
+      <p class="dek reveal d1">Territorios elegidos por su necesidad y su potencial de desarrollo — no por su facilidad de acceso.</p>
+      <div class="opener-stats reveal d2">
+        <div><b class="num">17</b>departamentos</div>
+        <div><b class="num">4</b>núcleos activos</div>
+        <div><b class="num">10</b>núcleos en creación</div>
+        <div><b class="num">130</b>municipios proyectados</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vn-map-section" data-chapter="03 · Territorios" aria-labelledby="vn-map-heading">
+    <div class="wrap vn-map-wrap">
+      <div class="kicker"><span class="folio">03</span><span class="rule"></span>Mapa interactivo</div>
+      <h2 id="vn-map-heading" class="vn-map-heading word-reveal">Un mapa, diecisiete <em>territorios.</em></h2>
+      <p class="vn-map-intro">Desde la sede en Medellín salen las rutas hacia cada territorio. Toca un departamento, un punto o un nombre de la lista para ver qué módulos se trabajan allí.</p>
+
+      <div class="vn-map-layout">
+        <div class="vn-map-figure reveal" id="vnMapFigure">
+          <div class="vn-map-stage" id="vnMapStage" role="group" aria-label="Mapa de Colombia con los territorios donde trabaja Vita Nova">
+            <svg class="vn-map-svg" viewBox="0 0 480 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+              <g class="vn-dptos">
+{{DEPTOS}}
+              </g>
+              <path class="vn-map-landmass" pathLength="1" d="{{LANDMASS}}"/>
+              <g class="vn-routes" id="vnRoutes"></g>
+            </svg>
+          </div>
+          <ul class="vn-map-legend" aria-hidden="true">
+            <li class="vn-map-legend-item"><span class="vn-map-legend-dot vn-map-legend-dot--sede"></span> Sede</li>
+            <li class="vn-map-legend-item"><span class="vn-map-legend-dot vn-map-legend-dot--activo"></span> Núcleo activo</li>
+            <li class="vn-map-legend-item"><span class="vn-map-legend-dot vn-map-legend-dot--creacion"></span> Núcleo en creación</li>
+            <li class="vn-map-legend-item"><span class="vn-map-legend-dot vn-map-legend-dot--ruta"></span> Ruta activa</li>
+          </ul>
+        </div>
+
+        <div class="vn-map-side">
+          <aside class="vn-map-panel" id="vn-map-panel" aria-live="polite">
+            <div class="vn-map-panel-body">
+              <p class="vn-map-panel-eyebrow">Territorio seleccionado</p>
+              <h3 class="vn-map-panel-title" id="vn-map-panel-title" data-dyn>—</h3>
+              <p class="vn-map-panel-sub" id="vn-map-panel-sub" data-dyn></p>
+              <span class="vn-map-badge" id="vn-map-panel-badge" data-dyn></span>
+              <p class="vn-map-panel-text" id="vn-map-panel-text" data-dyn></p>
+              <p class="vn-map-panel-eyebrow" style="margin-top:18px;">Módulos que se trabajan</p>
+              <ul class="vn-map-tags" id="vn-map-panel-tags" data-dyn></ul>
+            </div>
+          </aside>
+          <ul class="vn-map-list" id="vnMapList" aria-label="Lista de territorios"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- cuaderno de campo -->
+  <section class="article tight" data-chapter="03 · Territorios" style="padding-top:0;">
+    <div class="wrap essay-head">
+      <div>
+        <div class="kicker reveal">Cuaderno de campo</div>
+        <h3 class="reveal" style="margin-top:10px;">Así se ve el trabajo en territorio</h3>
+      </div>
+      <div class="essay-nav reveal">
+        <button type="button" id="essayPrev" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" id="essayNext" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="essay" id="essay" tabindex="0" aria-label="Galería de fotos de campo; desliza horizontalmente">
+      <figure><div class="ph"><img src="assets/revista/essay-1.jpg" alt="Taller de formación en círculo sobre un piso de colores" loading="lazy"></div><figcaption><b>01</b><span>Taller de formación en círculo.</span></figcaption></figure>
+      <figure class="tall"><div class="ph"><img src="assets/revista/essay-3.jpg" alt="Líder comunitario con atuendo tradicional en una mesa de trabajo" loading="lazy"></div><figcaption><b>02</b><span>Mesa de trabajo con líderes comunitarios.</span></figcaption></figure>
+      <figure><div class="ph"><img src="assets/img/galeria/g_12.jpg" alt="Participantes con antifaz y bastón guía sentados en un auditorio" loading="lazy"></div><figcaption><b>03</b><span>Sensibilización: ver el mundo desde otro lugar.</span></figcaption></figure>
+      <figure><div class="ph"><img src="assets/revista/essay-2.jpg" alt="Mesa de caracterización con familias" loading="lazy"></div><figcaption><b>04</b><span>Caracterización: cada familia entra con su propio diagnóstico.</span></figcaption></figure>
+      <figure class="tall"><div class="ph"><img src="assets/img/galeria/g_15.jpg" alt="Persona en silla de ruedas durante una jornada en la calle" loading="lazy"></div><figcaption><b>05</b><span>Jornada abierta a la comunidad.</span></figcaption></figure>
+      <figure><div class="ph"><img src="assets/revista/essay-4.jpg" alt="Grupo con una persona en silla de ruedas recorriendo un patio" loading="lazy"></div><figcaption><b>06</b><span>Recorrido de accesibilidad.</span></figcaption></figure>
+      <figure><div class="ph"><img src="assets/img/galeria/g_30.jpg" alt="Graduandos con toga posan con el equipo frente a una pantalla" loading="lazy"></div><figcaption><b>07</b><span>Graduación: la formación termina en un título.</span></figcaption></figure>
+      <figure><div class="ph"><img src="assets/revista/essay-5.jpg" alt="Participantes junto a una mesa con trabajos elaborados" loading="lazy"></div><figcaption><b>08</b><span>Muestra de trabajos de los participantes.</span></figcaption></figure>
+      <figure><div class="ph"><img src="assets/img/galeria/g_37.jpg" alt="Grupo de participantes y equipo posando juntos" loading="lazy"></div><figcaption><b>09</b><span>Equipo y participantes, juntos.</span></figcaption></figure>
+      <figure><div class="ph"><img src="assets/revista/essay-6.jpg" alt="Jornada de sensibilización al aire libre" loading="lazy"></div><figcaption><b>10</b><span>Jornada de sensibilización abierta.</span></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ 04 · CÓMO TRABAJAMOS ============ -->
+  <section class="article" id="metodo" data-chapter="04 · Cómo trabajamos">
+    <div class="big-folio" aria-hidden="true" data-parallax="0.08">04</div>
+    <div class="deco-ring" style="width:clamp(220px,30vw,420px);aspect-ratio:1;left:-10%;bottom:6%;" data-parallax="-0.08" aria-hidden="true"></div>
+    <div class="wrap">
+      <header class="feature-head">
+        <div class="kicker reveal"><span class="folio">04</span><span class="rule"></span>Cómo trabajamos</div>
+        <h2 class="word-reveal">Nadie camina <em>solo.</em></h2>
+      </header>
+      <div class="collage">
+        <figure class="c-main reveal">
+          <div class="ph r-3x4 reveal-img"><img src="assets/revista/par-amigo.jpg" alt="Una acompañante habla al oído de una participante con antifaz que sostiene un bastón guía" data-parallax="0.05" loading="lazy"></div>
+          <figcaption><b>Fig. 4.1</b><span>El acompañamiento ocurre a la distancia de una voz.</span></figcaption>
+        </figure>
+        <figure class="c-small reveal d2">
+          <div class="ph r-3x4 reveal-img"><img src="assets/revista/acompanamiento.jpg" alt="Un hombre acompaña a una mujer que usa caminador" loading="lazy"></div>
+        </figure>
+        <div class="c-text">
+          <div class="reveal">
+            <p class="tagline">Formar a la persona y abrirle un lugar productivo no son etapas separadas: ocurren al mismo tiempo, y siempre en compañía.</p>
+          </div>
+          <div class="reveal d1">
+            <div class="kicker">Método</div>
+            <h3 style="margin-top:10px;">El modelo <em>Dual</em></h3>
+            <p>Cada proceso combina dos frentes que avanzan juntos: la formación de la persona —con ajustes razonables, pensada para sus necesidades reales— y su inserción productiva dentro de un núcleo. Aprender y producir se sostienen mutuamente.</p>
+          </div>
+          <div class="reveal d2">
+            <div class="kicker">Acompañamiento</div>
+            <h3 style="margin-top:10px;">El <em>Par Amigo</em></h3>
+            <p>Nadie recorre el proceso solo. Cada participante tiene un Par Amigo: un acompañante cercano que sostiene el camino en lo emocional, lo práctico y lo comunitario, hasta que la persona camina por sí misma.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="split" style="margin-top:clamp(64px,9vw,120px);">
+        <div class="sticky-col">
+          <figure class="reveal">
+            <div class="ph r-4x5 reveal-img"><img src="assets/revista/graduacion.jpg" alt="Participantes con toga y birrete durante su ceremonia de graduación" data-parallax="0.05" loading="lazy"></div>
+            <figcaption><b>Fig. 4.2</b><span>Graduación de participantes: la formación termina en un título.</span></figcaption>
+          </figure>
+        </div>
+        <div>
+          <div class="kicker reveal">Lo que encuentras en el mapa</div>
+          <h3 class="reveal" style="font-size:clamp(2rem,4vw,3.2rem); margin:12px 0 26px;">Seis <em>módulos</em></h3>
+          <ol class="projects">
+            <li class="reveal"><span class="pn">I</span><div><h4>Caracterización y acompañamiento</h4><p>Diagnóstico psicológico, social y funcional de cada familia antes de intervenir, con acompañamiento psicosocial durante todo el proceso.</p></div></li>
+            <li class="reveal"><span class="pn">II</span><div><h4>Formación inclusiva</h4><p>Bachillerato por ciclos, más de 74 programas técnicos y 14 carreras profesionales con evaluación adaptada y ajustes razonables. Una red de 16 universidades —10 privadas y 6 públicas— sostiene hoy 470 becas.</p></div></li>
+            <li class="reveal"><span class="pn">III</span><div><h4>Empleabilidad</h4><p>Contratos de aprendizaje de dos años dentro de los modelos de negocio del proyecto, con ingresos dignos durante todo el proceso.</p></div></li>
+            <li class="reveal"><span class="pn">IV</span><div><h4>Núcleos de desarrollo</h4><p>Unidades productivas solidarias de 50 familias, con estándares certificables, destino de exportación y propiedad comunitaria.</p></div></li>
+            <li class="reveal"><span class="pn">V</span><div><h4>Tecnología para la Paz</h4><p>Drones, conectividad satelital, IoT y herramientas digitales accesibles, para que la brecha digital no sea una barrera más.</p></div></li>
+            <li class="reveal"><span class="pn">VI</span><div><h4>Sensibilización</h4><p>Taller certificado de 40 horas para organizaciones públicas y privadas que quieren construir entornos inclusivos desde adentro.</p></div></li>
+          </ol>
+          <div class="tags reveal"><span>Administrativa y empresarial</span><span>Agropecuaria y ambiental</span><span>Social y comunitaria</span><span>Tecnología e inteligencia artificial</span><span>Gastronomía y servicios</span><span>Salud</span><span>Jurídica</span><span>Arte, cultura y belleza</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:clamp(64px,9vw,120px);">
+        <div class="kicker reveal">Ser · Saber · Hacer</div>
+        <h3 class="reveal" style="font-size:clamp(2rem,4vw,3.2rem); margin-top:12px;">Veinticuatro meses hacia la <em>autonomía</em></h3>
+        <p class="dek reveal" style="margin-top:14px;">Primero la persona se fortalece, luego se forma y después produce. El núcleo como un todo completa su ciclo en cuatro años, hasta quedar plenamente en manos de la comunidad.</p>
+        <div class="route reveal">
+          <div class="route-step"><div class="m">MES 0</div><h4>Ingreso y caracterización</h4><p>Cada familia entra con un diagnóstico propio.</p></div>
+          <div class="route-step"><div class="m">MES 6</div><h4>Contrato de aprendizaje</h4><p>La formación se vuelve vínculo laboral formal.</p></div>
+          <div class="route-step"><div class="m">MES 12–18</div><h4>Producción solidaria</h4><p>El núcleo produce con destino de exportación.</p></div>
+          <div class="route-step"><div class="m">MES 24</div><h4>Autonomía</h4><p>La familia opera dentro de un núcleo dirigido por su comunidad.</p></div>
+        </div>
+        <div class="kicker reveal" style="margin-top:clamp(48px,7vw,80px);">A quién acompañamos</div>
+        <div class="tags reveal"><span>Personas con discapacidad visual, sensorial, física y cognitiva</span><span>Comunidades indígenas y resguardos</span><span>Migrantes</span><span>Personas desplazadas</span><span>Familias y cuidadores</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 · NÚCLEOS ============ -->
+  <section class="article paper" id="nucleos" data-chapter="05 · Los núcleos">
+    <div class="big-folio" aria-hidden="true" data-parallax="0.08">05</div>
+    <div class="wrap">
+      <header class="feature-head wide">
+        <div class="kicker reveal"><span class="folio">05</span><span class="rule"></span>Los núcleos</div>
+        <h2 class="word-reveal">Núcleos Inclusivos de Desarrollo Social y <em>Tecnológico.</em></h2>
+        <p class="dek reveal">En economías emergentes, para mercados solidarios de alto impacto.</p>
+      </header>
+      <div class="cols reveal" style="margin-bottom:clamp(48px,7vw,90px);">
+        <p class="dropcap">Un núcleo es una unidad productiva de 50 familias que se organiza bajo principios de economía solidaria para producir, con estándares certificables, un bien con destino de exportación. Al menos el 40% de sus integrantes pertenece a población vulnerable: personas con discapacidad, comunidades indígenas y víctimas del conflicto.</p>
+        <p>Tres decisiones de diseño lo distinguen de un proyecto productivo convencional: una escala fija que permite volumen exportable sin perder gobernanza comunitaria, una vocación exportadora definida desde el inicio y la propiedad comunitaria. El núcleo pertenece a quienes lo trabajan.</p>
+      </div>
+
+      <div class="kicker reveal" style="margin-bottom:20px;">Dónde estamos y hacia dónde vamos</div>
+      <div class="scale reveal" id="scale">
+        <div class="scale-item"><div class="scale-dot" style="--s:clamp(34px,5vw,64px);--outer:#2C8914;--inner:#2DB962;"></div><div class="txt"><small>Hoy</small><b class="num"><span class="count" data-to="28000">28.000</span></b><span>personas registradas</span></div></div>
+        <div class="scale-item"><div class="scale-dot" style="--s:clamp(40px,6vw,78px);--outer:#2C8914;--inner:#2DB962;"></div><div class="txt"><small>En curso</small><b class="num"><span class="count" data-to="10">10</span></b><span>núcleos en creación</span></div></div>
+        <div class="scale-item"><div class="scale-dot" style="--s:clamp(54px,8vw,104px);--outer:#229B76;--inner:#55CB81;"></div><div class="txt"><small>Fase 1</small><b class="num"><span class="count" data-to="120000">120.000</span></b><span>personas, meta de la primera fase</span></div></div>
+        <div class="scale-item"><div class="scale-dot" style="--s:clamp(66px,10vw,132px);--outer:#229B76;--inner:#55CB81;"></div><div class="txt"><small>Objetivo</small><b class="num"><span class="count" data-to="650">650</span></b><span>núcleos en el modelo completo</span></div></div>
+        <div class="scale-item"><div class="scale-dot" style="--s:clamp(80px,12vw,164px);--outer:#0F2E26;--inner:#55CB81;"></div><div class="txt"><small>A 5 años</small><b class="num"><span class="count" data-to="1000000">1.000.000</span></b><span>personas alcanzadas</span></div></div>
+      </div>
+
+      <div class="ficha reveal">
+        <div>
+          <div class="kicker">Núcleo tipo</div>
+          <h3 style="font-size:clamp(1.8rem,3.4vw,2.6rem); margin-top:10px;">Huevo de <em>exportación</em></h3>
+          <p>La producción se vende al 100% mediante contratos de compra a 10, 15 y 20 años con corporaciones internacionales. Cada familia trabaja con un mercado asegurado desde el primer día.</p>
+        </div>
+        <ul>
+          <li><span>Galpones por núcleo</span><b class="num">41</b></li>
+          <li><span>Aves ponedoras por galpón</span><b class="num">4.500</b></li>
+          <li><span>Ventas aseguradas</span><b>10, 15 y 20 años</b></li>
+          <li><span>Autonomía de la comunidad</span><b>Desde el mes 24</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="article forest tight" data-chapter="05 · Los núcleos">
+    <div class="deco-ring" style="width:clamp(260px,36vw,520px);aspect-ratio:1;right:-10%;top:-30%;border-color:rgba(85,203,129,.10);" data-parallax="0.1" aria-hidden="true"></div>
+    <div class="wrap">
+      <header class="feature-head" style="margin-bottom:34px;">
+        <div class="kicker reveal">Inversión y distribución</div>
+        <h3 class="reveal" style="font-size:clamp(2rem,4vw,3.2rem);">Cifras <em>verificables.</em></h3>
+        <p class="dek reveal">El modelo se financia por bloques de 10 núcleos. La transparencia en las cifras es parte de la propuesta.</p>
+      </header>
+      <div class="ledger reveal">
+        <div><b class="num">$11.800M</b><span>por núcleo de 50 familias</span></div>
+        <div><b class="num">$118.000M</b><span>por bloque de 10 núcleos</span></div>
+        <div><b class="num">80%</b><span>de los excedentes, para la comunidad</span></div>
+        <div><b class="num">20%</b><span>para escalamiento y aliados</span></div>
+      </div>
+      <p class="reveal" style="margin-top:20px; font-size:.84rem;">Cifras en pesos colombianos, ajustables según el comportamiento de las divisas y formalizadas en el acuerdo específico con cada aliado.</p>
+    </div>
+  </section>
+
+  <!-- ============ 06 · CARTILLA ============ -->
+  <section class="article" id="cartilla" data-chapter="06 · Instrumento propio">
+    <div class="wrap">
+      <div class="split" style="align-items:center;">
+        <figure class="reveal">
+          <div class="ph r-4x5 reveal-img"><img src="assets/revista/cartilla.jpg" alt="Participante con antifaz sostiene un bastón guía durante una sesión de formación" data-parallax="0.05" loading="lazy"></div>
+          <figcaption><b>Fig. 6.1</b><span>Formación inclusiva en práctica.</span></figcaption>
+        </figure>
+        <div>
+          <div class="kicker reveal"><span class="folio">06</span><span class="rule"></span>Instrumento propio</div>
+          <h2 class="word-reveal" style="font-size:clamp(2.3rem,5vw,4.2rem); margin-top:16px;">Cartilla de Acondicionamiento Académico <em>7.0</em></h2>
+          <p class="dek reveal" style="margin-top:22px;">Una herramienta pedagógica propia de Vita Nova, diseñada para fortalecer los Planes Individuales de Ajustes Razonables (PIAR) en procesos de educación inclusiva. Ya está en uso en los territorios donde opera el proyecto.</p>
+          <p class="reveal" style="margin-top:14px; color:var(--ink-soft);">El siguiente paso es escalarla a nivel nacional, con el respaldo de aliados que compartan esa visión.</p>
+          <div class="tags reveal"><span>Educación inclusiva</span><span>Decreto 1421 de 2017</span><span>Escalamiento nacional</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 · ALIANZAS ============ -->
+  <section class="article paper" id="alianzas" data-chapter="07 · Alianzas">
+    <div class="big-folio" aria-hidden="true" data-parallax="0.08">07</div>
+    <div class="wrap">
+      <header class="feature-head">
+        <div class="kicker reveal"><span class="folio">07</span><span class="rule"></span>Alianzas</div>
+        <h2 class="word-reveal">No se trabaja <em>solo.</em></h2>
+        <p class="dek reveal">Rigor académico, verificación independiente y responsabilidad institucional.</p>
+      </header>
+      <figure class="reveal" style="margin-bottom:clamp(40px,6vw,72px);">
+        <div class="ph r-21x9 reveal-img"><img src="assets/revista/alianza.jpg" alt="Graduandos con toga junto a aliados académicos durante una ceremonia de graduación" data-parallax="0.06" loading="lazy" style="object-position:50% 40%;"></div>
+        <figcaption><b>Fig. 7.1</b><span>Ceremonia de graduación con aliados académicos.</span></figcaption>
+      </figure>
+      <div class="ally-wall" id="allyWall"></div>
+      <p class="note reveal">Además, una red de 16 universidades —10 privadas y 6 públicas— abre cupos y 470 becas para los participantes del modelo y certifica su formación.</p>
+      <div class="kicker reveal" style="margin:clamp(56px,8vw,96px) 0 22px;">El ecosistema de aliados</div>
+      <div class="ecosystem">
+        <div class="eco reveal"><h4>Empresas privadas</h4><span class="give">Aportan</span><p>Recursos, conocimiento técnico y capacidad logística.</p><span class="get">Reciben</span><p>Beneficios tributarios e impacto verificable para sus reportes de sostenibilidad.</p></div>
+        <div class="eco reveal d1"><h4>ESAL e instituciones educativas</h4><span class="give">Aportan</span><p>Presencia territorial y oferta formativa.</p><span class="get">Reciben</span><p>Reconocimiento, prioridad contractual y participación en los excedentes.</p></div>
+        <div class="eco reveal d2"><h4>Cooperantes internacionales</h4><span class="give">Aportan</span><p>Financiación y estándares de impacto.</p><span class="get">Reciben</span><p>Un modelo replicable, documentado y auditable.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 · PARTICIPAR ============ -->
+  <section class="article forest" id="participar" data-chapter="08 · Participar">
+    <div class="big-folio" aria-hidden="true" data-parallax="0.08">08</div>
+    <div class="wrap">
+      <header class="feature-head">
+        <div class="kicker reveal"><span class="folio">08</span><span class="rule"></span>Participar</div>
+        <h2 class="word-reveal">Hay un lugar para <em>cada uno.</em></h2>
+        <p class="dek reveal">Personas, familias, empresas, universidades y donantes: al final, todos somos parte del mismo camino.</p>
+      </header>
+      <div class="doors">
+        <div class="door reveal">
+          <span class="tag">Personas y familias</span>
+          <h3>Cuéntanos tu caso</h3>
+          <p>Envíanos un mensaje y te enviamos más información sobre la ruta, los programas de formación y el territorio más cercano.</p>
+          <a class="cta" data-wa="Hola, quiero contarles mi caso y recibir más información." href="#contacto">Escribir por WhatsApp <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="door reveal d1">
+          <span class="tag">Empresas y organizaciones</span>
+          <h3>Construyamos juntos</h3>
+          <p>Responsabilidad social, empleo inclusivo, compras a los núcleos, sensibilización certificada o coinversión. Elige el frente donde tu organización aporta más.</p>
+          <a class="cta" href="mailto:admin@vitanovacolombia.org?subject=Alianza%20con%20Vita%20Nova">Escribir a Vita Nova <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="door reveal d2">
+          <span class="tag">Donantes</span>
+          <h3>Haz posible el próximo núcleo</h3>
+          <p>Tu aporte se convierte en formación con ajustes razonables, contratos de aprendizaje y núcleos productivos. Recibes tu certificado de donación.</p>
+          <a class="cta" id="donateBtn" data-wa="Hola, quiero hacer una donación a Vita Nova." href="#contacto">Quiero donar <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="kicker reveal" style="margin:clamp(56px,8vw,96px) 0 6px;">Seis formas de sumarse</div>
+      <div class="menu">
+        <div class="menu-item reveal"><span class="mn">01</span><div><span class="tag">Movilidad</span><h3>Logística y transporte territorial</h3><p>Llevar equipos, formadores y materiales a comunidades aisladas por rutas aéreas, fluviales y terrestres.</p></div></div>
+        <div class="menu-item reveal d1"><span class="mn">02</span><div><span class="tag">Tecnología</span><h3>Herramientas y conectividad</h3><p>Equipos, software accesible, conectividad y desarrollo tecnológico para núcleos y aulas.</p></div></div>
+        <div class="menu-item reveal d2"><span class="mn">03</span><div><span class="tag">Educación</span><h3>Formación y becas</h3><p>Contenidos, instructores, programas técnicos y cupos que se suman a la red universitaria.</p></div></div>
+        <div class="menu-item reveal"><span class="mn">04</span><div><span class="tag">Empleabilidad</span><h3>Vinculación laboral</h3><p>Contratos de aprendizaje, prácticas y empleo inclusivo dentro de la cadena de valor de la empresa.</p></div></div>
+        <div class="menu-item reveal d1"><span class="mn">05</span><div><span class="tag">Mercado</span><h3>Compras y cadena de suministro</h3><p>Compra de la producción de los núcleos o apoyo para llevarla a mercados nacionales e internacionales.</p></div></div>
+        <div class="menu-item reveal d2"><span class="mn">06</span><div><span class="tag">Inversión</span><h3>Recursos y voluntariado</h3><p>Coinversión en nuevos núcleos, donaciones en especie, programas de RSE y voluntariado corporativo especializado.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="article tight" data-chapter="08 · Participar">
+    <div class="wrap">
+      <header class="feature-head" style="margin-bottom:36px;">
+        <div class="kicker reveal">Cómo empieza una alianza</div>
+        <h3 class="reveal" style="font-size:clamp(2rem,4vw,3.2rem);">Un modelo abierto a la <em>coinversión.</em></h3>
+        <p class="dek reveal">Cada aliado realiza un aporte equivalente en conocimiento, en especie o en recursos, destinado a la gestión del territorio.</p>
+      </header>
+      <div class="steps">
+        <div class="stepx reveal"><div class="sn">PASO 01</div><h4>Manifestación de interés</h4><p>La entidad comunica su intención de vincularse y el sector desde el que quiere aportar.</p></div>
+        <div class="stepx reveal d1"><div class="sn">PASO 02</div><h4>Sesión de alineación</h4><p>Se presenta el modelo en detalle y se identifican los territorios de mayor valor conjunto.</p></div>
+        <div class="stepx reveal d2"><div class="sn">PASO 03</div><h4>Valoración del aporte</h4><p>Se cuantifica y documenta el aporte, y se define su destinación.</p></div>
+        <div class="stepx reveal d3"><div class="sn">PASO 04</div><h4>Suscripción del acuerdo</h4><p>Se firma el convenio, con obligaciones, indicadores y beneficios.</p></div>
+        <div class="stepx reveal d4"><div class="sn">PASO 05</div><h4>Ejecución y seguimiento</h4><p>Reportes periódicos, con verificación académica independiente.</p></div>
+      </div>
+      <div class="soon reveal">
+        <span class="tag">Próximamente</span>
+        <h3>Casa <em>Raíz</em></h3>
+        <p>Lo próximo de Vita Nova ya está echando raíces: un proyecto de territorio, comunidad e impacto sostenible. Si tu empresa quiere conocerlo desde el comienzo, escríbenos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- cita de cierre -->
+  <section class="closing-quote" data-chapter="Cierre">
+    <div class="opener-media"><img src="assets/revista/cierre.jpg" alt="" data-parallax="0.12" loading="lazy"></div>
+    <div class="wrap">
+      <blockquote class="reveal">«Cuando una comunidad deja de esperar que alguien la salve y descubre que puede producir, decidir y exportar por sí misma, la transformación ya no es un proyecto: es una <em>vida nueva.</em>»</blockquote>
+    </div>
+  </section>
+
+  <!-- ============ 09 · CONTACTO ============ -->
+  <section class="backcover" id="contacto" data-chapter="09 · Contacto">
+    <div class="wrap">
+      <div class="logo-film reveal"><video id="logoFilm" muted loop playsinline preload="metadata" aria-label="Animación del logo de Vita Nova"></video></div>
+      <div class="back-grid">
+        <div class="reveal">
+          <div class="kicker"><span class="folio">09</span><span class="rule"></span>Contacto</div>
+          <h2 style="margin-top:16px;">Súmate. <em>Conversemos.</em></h2>
+          <p>Cuéntanos tu caso, envía un mensaje y te enviamos más información. Si eres una organización, escríbenos para coordinar una sesión de alineación.</p>
+          <div class="cta-row">
+            <a class="cta" data-wa="Hola, quiero contarles mi caso y recibir más información." href="mailto:admin@vitanovacolombia.org">Escribir por WhatsApp <span aria-hidden="true">→</span></a>
+            <a class="cta ghost" href="mailto:admin@vitanovacolombia.org?subject=Contacto%20Vita%20Nova">Escribir un correo</a>
+          </div>
+          <div class="socials" id="socials" aria-label="Redes sociales"></div>
+        </div>
+        <div class="reveal d1">
+          <div class="contact-field"><span class="val"><svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"></rect><path class="mail-flap" d="m3 6.5 9 6.5 9-6.5"></path></svg><span id="emailText">admin@vitanovacolombia.org</span></span><button class="copy-btn" id="copyEmail" type="button">Copiar</button></div>
+          <div class="contact-field"><span class="val"><svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><a href="tel:+573009802268" style="text-decoration:none;">+57 300 980 2268</a></span></div>
+          <div class="contact-field"><span class="val"><i class="pin" aria-hidden="true"></i>Av. El Poblado N° 1-50, piso 6 · Medellín, Antioquia</span></div>
+          <svg class="mini-map" viewBox="0 0 480 640" aria-hidden="true">
+            <path class="mini-land" d="{{LANDMASS}}"/>
+            <g class="mini-routes">
+              <path d="M147,244 Q150,180 176,137"/>
+              <path d="M147,244 Q200,120 265,61"/>
+              <path d="M147,244 Q165,290 184,304"/>
+              <path d="M147,244 Q240,420 331,600"/>
+            </g>
+            <circle class="mini-node" cx="176" cy="137" r="8"/>
+            <circle class="mini-node" cx="265" cy="61" r="8"/>
+            <circle class="mini-node" cx="184" cy="304" r="8"/>
+            <circle class="mini-node" cx="331" cy="600" r="8"/>
+            <circle class="mini-home-ring" cx="147" cy="244" r="13"/>
+            <circle class="mini-home" cx="147" cy="244" r="10"/>
+            <text x="122" y="252" text-anchor="end">Medellín</text>
+          </svg>
+        </div>
+      </div>
+      <div class="colophon-meta">
+        <span>Asociación Vita Nova Colombia · NIT 901.778.613-2 · Entidad sin ánimo de lucro</span>
+        <span><a href="legal.html">Política de tratamiento de datos</a> · Inclusión · Formación · Paz</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<a class="wa-float" data-wa="Hola, quiero contarles mi caso y recibir más información." href="#contacto" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>
+  <span>Cuéntanos tu caso</span>
+</a>
+
+<script src="assets/js/data.js?v={{V}}"></script>
+<script>
+{{JS_PAGINA}}
+</script>
+<script>
+{{JS_IDIOMA}}
+</script>
+</body>
+</html>

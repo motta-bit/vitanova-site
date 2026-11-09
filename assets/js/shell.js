@@ -7,17 +7,16 @@
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
 
+  // El sitio es una sola página: el menú lleva a sus secciones.
   const PAGES = [
-    { href: "index.html",     label: "Inicio" },
-    { href: "nosotros.html",  label: "Nosotros" },
-    { href: "programas.html", label: "Programas" },
-    { href: "mapa.html",      label: "Mapa" },
-    { href: "nucleos.html",   label: "Núcleos" },
-    { href: "galeria.html",   label: "Galería" },
-    { href: "eventos.html",   label: "Eventos" },
-    { href: "apoyar.html",    label: "Donar y apoyar" },
-    { href: "empresas.html",  label: "Empresas" },
-    { href: "contacto.html",  label: "Contacto" }
+    { href: "index.html",              label: "Inicio" },
+    { href: "index.html#nosotros",     label: "Nosotros" },
+    { href: "index.html#territorios",  label: "Mapa" },
+    { href: "index.html#metodo",       label: "Cómo trabajamos" },
+    { href: "index.html#nucleos",      label: "Núcleos" },
+    { href: "index.html#alianzas",     label: "Alianzas" },
+    { href: "index.html#participar",   label: "Participar" },
+    { href: "index.html#contacto",     label: "Contacto" }
   ];
   const current = (location.pathname.split("/").pop() || "index.html");
 
